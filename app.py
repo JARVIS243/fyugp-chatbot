@@ -1,0 +1,142 @@
+import streamlit as st
+import requests
+import webbrowser
+import re
+import fitz  # PyMuPDF
+
+# --- Configuration ---
+st.set_page_config(page_title="FYUGP Assistant", layout="wide")
+
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+if "pdf_text" not in st.session_state:
+    st.session_state.pdf_text = ""
+
+# --- Custom CSS ---
+st.markdown("""
+    <style>
+    body { background: #111; }
+    .css-18ni7ap.e8zbici2 { background: #111; }
+    .sidebar { width: 180px; padding: 20px; color: white; }
+    .content { flex: 1; padding: 30px; color: white; }
+    .title { font-size: 32px; font-weight: bold; color: #00ccff;
+             animation: flicker 4s linear infinite; text-align: center; }
+    .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
+    .message { background-color: #333; padding: 15px; margin-bottom: 10px;
+               border-radius: 10px; }
+    .user { text-align: right; background-color: #004d99; color: white; }
+    .bot { text-align: left; background-color: #006600; color: white; }
+    @keyframes flicker {
+        0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; }
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- Layout ---
+col1, col2 = st.columns([1, 4])
+
+# --- Function: DuckDuckGo Search ---
+def duckduckgo_answer(query):
+    try:
+        url = "https://api.duckduckgo.com/"
+        params = {
+            "q": query,
+            "format": "json",
+            "no_redirect": 1,
+            "no_html": 1,
+            "skip_disambig": 1
+        }
+        response = requests.get(url, params=params)
+        data = response.json()
+
+        if data.get("AbstractText"):
+            return data["AbstractText"]
+        elif data.get("RelatedTopics"):
+            for topic in data["RelatedTopics"]:
+                if isinstance(topic, dict) and topic.get("Text"):
+                    return topic["Text"]
+
+        return "❌ No exact answer found. Please try rephrasing your question."
+    except Exception as e:
+        return f"❌ Failed to get an answer.\n\n**Error:** {str(e)}"
+
+# --- Function: Search in PDF ---
+def search_pdf(text, query):
+    matches = [line.strip() for line in text.split("\n") if query.lower() in line.lower()]
+    return "\n".join(matches[:3]) if matches else None
+
+# --- Sidebar ---
+with col1:
+    st.markdown("<div class='sidebar'>", unsafe_allow_html=True)
+    st.markdown("## 🔗 Quick Access")
+
+    if st.button("📝 Notes Site"):
+        webbrowser.open_new_tab("https://thunderous-sunflower-7230f3.netlify.app/")
+    if st.button("🏛️ University Site"):
+        webbrowser.open_new_tab("https://keralauniversity.ac.in/")
+    if st.button("📚 Course Site"):
+        webbrowser.open_new_tab("https://slcm.keralauniversity.ac.in/")
+    if st.button("🏫 College Site"):
+        webbrowser.open_new_tab("https://casmvk.kerala.gov.in/")
+    if st.button("❓ Help / Guide"):
+        st.info("Use sidebar buttons or ask: What is FYUGP, VC of KU, open course site, or upload a PDF and ask from it.")
+
+    # --- PDF Upload ---
+    uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
+    if uploaded_file:
+        doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+        full_text = ""
+        for page in doc:
+            full_text += page.get_text()
+        st.session_state.pdf_text = full_text
+        st.success("✅ PDF loaded! Now ask anything from it.")
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# --- Main Chat Area ---
+with col2:
+    st.markdown("<div class='content'>", unsafe_allow_html=True)
+    st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
+
+    for role, msg in st.session_state.chat_history:
+        css_class = "user" if role == "user" else "bot"
+        st.markdown(f"<div class='message {css_class}'>{msg}</div>", unsafe_allow_html=True)
+
+    user_input = st.chat_input("Type your question here...")
+
+    if user_input:
+        st.session_state.chat_history.append(("user", user_input))
+        user_lower = user_input.lower()
+
+        # --- Open Website Shortcuts ---
+        if "open notes" in user_lower:
+            webbrowser.open_new_tab("https://thunderous-sunflower-7230f3.netlify.app/")
+            answer = "✅ Opening Notes Site..."
+        elif "open university" in user_lower:
+            webbrowser.open_new_tab("https://keralauniversity.ac.in/")
+            answer = "✅ Opening University Site..."
+        elif "open course" in user_lower:
+            webbrowser.open_new_tab("https://slcm.keralauniversity.ac.in/")
+            answer = "✅ Opening Course Site..."
+        elif "open college" in user_lower:
+            webbrowser.open_new_tab("https://casmvk.kerala.gov.in/")
+            answer = "✅ Opening College Site..."
+        elif "vc" in user_lower:
+            answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
+        elif "fyugp" in user_lower:
+            answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
+        elif st.session_state.pdf_text:
+            pdf_answer = search_pdf(st.session_state.pdf_text, user_input)
+            if pdf_answer:
+                answer = f"📄 From PDF:\n\n{pdf_answer}"
+            else:
+                answer = duckduckgo_answer(user_input)
+        else:
+            answer = duckduckgo_answer(user_input)
+
+        st.session_state.chat_history.append(("bot", answer))
+        st.rerun()
+
+    st.markdown("</div>", unsafe_allow_html=True)
