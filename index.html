@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAS MVK FYUGP Notes Hub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f4f6f8, #e3eaf2);
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #1a237e;
+      margin-bottom: 5px;
+      animation: slideInDown 1s ease-in-out;
+    }
+    h3 {
+      text-align: center;
+      color: #3949ab;
+      margin-top: 0;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .section {
+      margin: 30px auto;
+      max-width: 950px;
+      background: white;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      transition: transform 0.2s;
+    }
+    .section:hover {
+      transform: scale(1.005);
+    }
+    .section h2 {
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      animation: slideInLeft 1s ease-in-out;
+    }
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-50px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+    .folder-label {
+      margin-left: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 8px 12px;
+      background: #e3f2fd;
+      border-radius: 6px;
+      margin-top: 6px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .folder-label:hover {
+      background: #bbdefb;
+      transform: translateX(5px);
+    }
+    .nested {
+      display: none;
+      margin-left: 25px;
+    }
+    .module {
+      margin-left: 20px;
+      background-color: #f1f8e9;
+      margin-top: 4px;
+      padding: 6px 10px;
+      border-radius: 5px;
+      transition: background 0.2s;
+    }
+    .module:hover {
+      background-color: #dcedc8;
+    }
+    .module a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: 500;
+    }
+    .module a:hover {
+      text-decoration: underline;
+    }
+    .coming-soon {
+      margin-left: 25px;
+      font-style: italic;
+      color: #999;
+    }
+    h5, h6 {
+      text-align: center;
+      margin-top: 40px;
+      color: #607d8b;
+      animation: fadeIn 3s ease-in-out;
+    }
+  </style>
+  <script>
+    function toggleDisplay(event) {
+      const next = event.target.nextElementSibling;
+      if (next && next.classList.contains('nested')) {
+        next.style.display = next.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+    window.onload = () => {
+      document.querySelectorAll('.folder-label').forEach(label => {
+        label.addEventListener('click', toggleDisplay);
+      });
+    };
+  </script>
+</head>
+<body>
+  <h1>📚 CAS MVK FYUGP Notes Hub</h1>
+  <h3> WELCOME TO THE CAS NOTES HUB </h3>
+
+  <div class="section">
+    <h2>📁 Detailed Notes</h2>
+
+    <div class="folder-label">SEM 1</div>
+    <div class="nested">
+      <div class="folder-label">DSC 1</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1Wmp9UlsBEzFUYTE6KsiPnTgvF0QdO05c/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1hiEPI0a6V1qzyuhPxW6srMC9Ijx-0mtV/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1Mo2MVIMLa3zjoL7JJXb_34NXGYBmRohw/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1qm8RbawAIhCcyDy2yeXjcuvj12cJhjE-/view" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSC 2</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1HLfLgt8v3ZhWAoaSvp8k9YbYMSLnrswS/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1qUgdHTY5mNVZzZq5ruhhzAZJRCqSO2Vj/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1x4N-DjAlIgCXaFr_RPO9f-K2qBGzs53w/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1wEKtM6l1uc9P-3DHSzIjJIVos5KQT1y_/view" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSC 3</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1JR9Aqka6vZNGAuMZguY6evV2i_20dl7k/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1vqDHCh-u9z79CJ3lOmf2KZgJv604dslv/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1RdeA6yx1LRA_t-HAJz-FQMPouAvQ5v7_/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1t-VjGG2UWAAFTbiqUJUSxZqIpzNzaTzH/view" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">MDC</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/15zSgIEWskwRNg9Qbfjwv0ZwvzpyPu9fV/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1tmiXhcVC-PbKBT6hBjfUayXdHUcg2ZRI/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1cRA_NaKVG__112QPiVvjSRJxWx16ZNMY/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1sur2RSWXDZwg3Rdo2BDLe_S-urxauPkj/view" target="_blank">MODULE 4</a></div>
+      </div>
+    </div>
+
+    <div class="folder-label">SEM 2</div>
+    <div class="nested">
+      <div class="folder-label">DSC 1</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1Et-rUSsRYJED3B7XfJEmX0G5YKoftebg/view?usp=drive_link" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1ZqKaMsbR8b5aIZS7aTd5IVT21xhzk6qy/view?usp=drive_link" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/173JWmMfs8yZxqwSUMwZOK_XMIKBD7Me4/view?usp=drive_link" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1kHoKL35ANgS63Sz2dqvBqD7hDYbwNQbT/view?usp=drive_link" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSC 2</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1SZFndOl0kc88RmjVoy86IS0o7HL-CJ5h/view?usp=drive_link" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1E_ePPlEMjblHa8VvQ41rZ8L2cKs6ug70/view?usp=drive_link" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1x7CNkUZGbpaQHphwabhOUtQAVcjBlKYK/view?usp=drive_link" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/10trixC_B1xI0Tc0xDQ4T2PCRrwnNLYki/view?usp=drive_link" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSC 3</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1azOjyiEUnEdchhGIFbMjVrGn-d7BgoyU/view?usp=drive_link" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1WfDEQYZOYtH1mRyH1mUBx7efLW8yKJE_/view?usp=drive_link" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1UBtBjIeEOxj--L2j8TfAZvp76Qk1kVYM/view?usp=sharing" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/14xMfrUZtTR2PKijvJI5anF6VsZbXqWVI/view?usp=drive_link" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">MDC</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1MNPm8KyO2Oa-iSvqo9fhjDjyaTyXzMsa/view?usp=drive_link" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1RyhKfvLtO1jBXdLSDTcIBGUnzKr9nJfd/view?usp=drive_link" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1c9m3h_uQFM8GgnrU25IAmLOwK90IGVRg/view?usp=sharing" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/12NYOKL7m6pDX8SYKQCXqiwiqA02Lgem7/view?usp=drive_link" target="_blank">MODULE 4</a></div>
+      </div>
+    </div>
+
+
+    <div class="folder-label">SEM 3</div>
+    <div class="nested">
+      <div class="folder-label">DSC 1</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1_NOXbpQiUjTZmOkVBqZ7dmUxGeowcPoB/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1QtBnSpDFBw1vwAgSFFU4kZTyDDm-GICu/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1CJgGR_wVmoi6n1BvQ8yk6QFN62bhR4Ta/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/17JuJH7e5uYrpMRNlWBFTn27I3zTwJxAJ/view" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSC 2</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1fXDEjTpbSOdDlJGt-HnqMESv5A9uebhk/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1TNxCMJGFkojOajlr5gP4MVV5A7sTTTSz/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1XRUZZc9UWuKOn_n-L1U_WaHevklohFLm/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1H5ik4VKFNWyOifhZlNGlv8Bv006WpNr3/view" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSC 3</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1GpUfhrobwZh38vSPa3eXhWl9e0b6SpSN/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1sil5YUX00DNmc2WWCOJvhu5ZHDuwDiVQ/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1gN47UvaYwkG-kSLQ6j2fHjq6iXkoF--T/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1pAAv5RPDeoVjC8iKqUs6QXXoO_0S625c/view" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">DSE</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1FbFU0v3pjKAwW3FvXOt5q0NRLrN-4F_f/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1lI4DeVYoeDQav3NInHCzWeFdusnZetO8/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1mIVwyIWQDsKem6hV3xsyVuAdtR0PEtPy/view?usp=sharing" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/16VibwRqD2QoHEybadE-ofeRvLPcFxTB2/view?usp=sharing" target="_blank">MODULE 4</a></div>
+      </div>
+      <div class="folder-label">VAC</div>
+      <div class="nested">
+        <div class="module"><a href="https://drive.google.com/file/d/1b4eKZxn7T9SFwplU85B_BY6fWALlOYyc/view" target="_blank">MODULE 1</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1LhHl24mQJ1mgvOkH9Di7zqtXeZpx0rkA/view" target="_blank">MODULE 2</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/1f5a5DZQSix5mPQyOjbdlzC2kGhx0_N04/view" target="_blank">MODULE 3</a></div>
+        <div class="module"><a href="https://drive.google.com/file/d/18UU7gM2PU7l5vxm1nvxe_2L_PvmG_b6n/view" target="_blank">MODULE 4</a></div>
+      </div>
+    </div>
+
+    <div class="folder-label">SEM 4</div>
+    <div class="nested"><div class="coming-soon">🚧 Not updated. It will update soon.</div></div>
+
+    <div class="folder-label">SEM 5</div>
+    <div class="nested"><div class="coming-soon">🚧 Not updated. It will update soon.</div></div>
+
+    <div class="folder-label">SEM 6</div>
+    <div class="nested"><div class="coming-soon">🚧 Not updated. It will update soon.</div></div>
+  </div>
+
+  <div class="section">
+    <h2>📁 Short Notes</h2>
+    <div class="folder-label">SEM 1</div>
+  <div class="nested">
+    <div class="module"><a href="https://drive.google.com/file/d/1zkeaaqyfxhWl1aUqJTnaTwDMV0oNR6lw/view?usp=sharing" target="_blank">DSC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1mkCkd6zpIIUO1OgK-S0UW3ruqs7yGFDP/view?usp=sharing" target="_blank">DSC 2</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1RL1yhsDXuo3xlw0K0nr2JXwGYpBOhpsv/view?usp=sharing" target="_blank">DSC 3</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1XnKbCOSwV8veg2Hw_x_wzkqLZqtPD2Nw/view?usp=sharing" target="_blank">MDC</a></div>
+  </div>
+  <div class="folder-label">SEM 2</div>
+  <div class="nested">
+    <div class="module"><a href="https://drive.google.com/file/d/1aCd2vSp_nCDjsX63enicqqIHwgTSeffF/view?usp=sharing" target="_blank">DSC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/11DjSLEpSYTfWbREGKDlDoPlgNsFLddwv/view?usp=drive_link" target="_blank">DSC 2</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1qY7fQBOYQHHQ5p410EQXRuAF2s0D8_--/view?usp=drive_link" target="_blank">DSC 3</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1OTZkXgk3vnooU1OZ81nNFhlnmC2ZQIDN/view?usp=drive_link" target="_blank">MDC</a></div>
+  </div>
+  <div class="folder-label">SEM 3</div>
+  <div class="nested">
+    <div class="module"><a href="https://drive.google.com/file/d/120RODfdlRyQ8KovVwrz19V3UQMIyzr-r/view?usp=drive_link" target="_blank">DSC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/15cBjHc-izbAwHuenDZkyXI5vQPGNd16s/view?usp=drive_link" target="_blank">DSC 2</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/13Qbb72P3claC6BrT_Z7EAUWfhTsLwZpA/view?usp=drive_link" target="_blank">DSC 3</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1Yx4yelvHi4NsmdYYdLgSpxmqpZuGopAd/view?usp=sharing" target="_blank">DSE</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/14qKGPUmHzdF1OyKGK3S_CXJIlaxB-7yA/view?usp=drive_link" target="_blank">VAC</a></div>
+  </div>
+  <div class="folder-label">SEM 4</div>
+  <div class="nested">
+    <div class="module">🚧 Not updated. It will update soon.</div>
+  </div>
+  <div class="folder-label">SEM 5</div>
+  <div class="nested">
+    <div class="module">🚧 Not updated. It will update soon.</div>
+  </div>
+  <div class="folder-label">SEM 6</div>
+  <div class="nested">
+    <div class="module">🚧 Not updated. It will update soon.</div>
+  </div>
+</div>
+
+
+  <div class="section"><h2>📁 Previous Question Papers</h2>
+  <div class="folder-label">SEM 1</div>
+  <div class="nested">
+    <div class="folder-label">Model Question Papers</div>
+    <div class="nested">
+      <div class="module"><a href="https://drive.google.com/file/d/1uev7ygSqc8J_wsRvkciNuTG4LRoWPnOz/view?usp=drive_link" target="_blank">AEC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1mnygR9pRR856Gqbq3Nis8TYrBIWlXp6e/view?usp=drive_link" target="_blank">AEC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1cIpmXRng6lquyThuBuoG_1WWy2MJm_Kg/view?usp=drive_link" target="_blank">DSC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1KmjQ-RYvRXdOB93s4GRXkT7OpRhOyAed/view?usp=drive_link" target="_blank">DSC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1BEvtCADhovDYA5OfHuIovJnydt187kqt/view?usp=drive_link" target="_blank">DSC 3</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1RkDZ5147v5Ax1uB4ZA4XGM2pEa_ITOnO/view?usp=drive_link" target="_blank">MDC</a></div>
+    </div>
+    <div class="folder-label">Main Exam Question Papers</div>
+    <div class="nested">
+      <div class="module"><a href="https://drive.google.com/file/d/1AS-Bb6U8iGHvjjn35KdDCMN9CgQJZH0R/view?usp=drive_link" target="_blank">AEC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1CsKctjeMQWtsfefDxVdvR0okQ8s7WIn5/view?usp=drive_link" target="_blank">AEC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1QiuznDXwwP-XJpCKMce0VUvjGZ3BHWPK/view?usp=drive_link" target="_blank">DSC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1lP4PzplNCsAufZ020FYuKxMk-DYfaKxp/view?usp=drive_link" target="_blank">DSC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1xVnMPwIu9S7wrk_ymJ19tY5W5ObHJUVC/view?usp=drive_link" target="_blank">DSC 3</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1PLL_ucNaUoU25jKJsAKpZAHtnSnPA4vB/view?usp=drive_link" target="_blank">MDC</a></div>
+    </div>
+  </div>
+  <div class="folder-label">SEM 2</div>
+  <div class="nested">
+    <div class="folder-label">Model Question Papers</div>
+    <div class="nested">
+      <div class="module"><a href="https://drive.google.com/file/d/1EiimAimxmOc__-JyzXH_nYLnwh8BJc8i/view?usp=drive_link" target="_blank">AEC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1-5ElE0QLX-LKwCVSv2r_cbe-rb7zICCy/view?usp=drive_link" target="_blank">AEC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1c_pZ5j45lTne-VhspA8Agj1BMaSfLKw9/view?usp=drive_link" target="_blank">DSC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1cGRXYH-YsohmBDllTnxvfYqyQru_gKd1/view?usp=drive_link" target="_blank">DSC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1pRoZAAv1izmctZtJGGV5I6BKxXCVjsxO/view?usp=drive_link" target="_blank">DSC 3</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1kpf63piY5BHfgrlkMHnS5UQhe5bOyyZZ/view?usp=drive_link" target="_blank">MDC</a></div>
+    </div>
+    <div class="folder-label">Main Exam Question Papers</div>
+    <div class="nested">
+      <div class="module"><a href="https://drive.google.com/file/d/1mjNb7-7emMhiXS06myGRS4mK8KVD_ZZe/view?usp=drive_link" target="_blank">AEC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/13UgmAEAzNBCPgI_QNuM9ebOZG8IPghSL/view?usp=drive_link" target="_blank">AEC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1N9zt9J-F8x-zYmscFvB0ZJGk48UhoW0l/view?usp=drive_link" target="_blank">DSC 1</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1ifkhuWzNGlVmbRpYUw8h7LrocUcdJHB9/view?usp=drive_link" target="_blank">DSC 2</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1kqsw7oORVMsNQqa6KQO3dW_AMVxhW6Rb/view?usp=drive_link" target="_blank">DSC 3</a></div>
+      <div class="module"><a href="https://drive.google.com/file/d/1Zqh9zg3ET1c6GlbtIeIL-jHEeOrL7bcy/view?usp=drive_link" target="_blank">MDC</a></div>
+    </div>
+  </div>
+  <div class="folder-label">SEM 3</div>
+  <div class="nested">
+    <div class="folder-label">Model Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+    <div class="folder-label">Main Exam Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+  </div>
+  <div class="folder-label">SEM 4</div>
+  <div class="nested">
+    <div class="folder-label">Model Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+    <div class="folder-label">Main Exam Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+  </div>
+  <div class="folder-label">SEM 5</div>
+  <div class="nested">
+    <div class="folder-label">Model Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+    <div class="folder-label">Main Exam Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+  </div>
+  <div class="folder-label">SEM 6</div>
+  <div class="nested">
+    <div class="folder-label">Model Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+    <div class="folder-label">Main Exam Question Papers</div>
+    <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+  </div>
+</div>
+
+
+  <div class="section">
+    <h2>📁 Syllabus</h2>
+
+    <div class="folder-label">SEM 1</div>
+  <div class="nested">
+    <div class="module"><a href="https://drive.google.com/file/d/1zaBJkM3teDzwCVMZo3zAMOqZdwBaNO_g/view?usp=sharing" target="_blank">AEC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1SmEW-S0WDNzvVNRZDqRitP-7HH4pB7A6/view?usp=drive_link" target="_blank">AEC 2 (1)</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1QBSUpwJxixmPRZY1h_Muw-LfliDCtVFg/view?usp=drive_link" target="_blank">AEC 2 (2)</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1g5TKmXHGj3v4NY31JmwocmwUl8nGrSCN/view?usp=drive_link" target="_blank">DSC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/12JqbkgDE5t2Uov7QspwYc6ta6QpmGAKW/view?usp=drive_link" target="_blank">DSC 2</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1KU2Sll4zg7D2ddB56XwARjjb-ireYFgk/view?usp=drive_link" target="_blank">DSC 3</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1nbB-AcVF1hC-Xh7_mvqGXoakr3jJWwix/view?usp=drive_link" target="_blank">MDC</a></div>
+  </div>
+  <div class="folder-label">SEM 2</div>
+  <div class="nested">
+    <div class="module"><a href="https://drive.google.com/file/d/1tiC8kIbG1xjhuPGkyaZyVO98bT6GdYhj/view?usp=drive_link" target="_blank">AEC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1gHKgrH74gkpSq6JktkvDDvXxL5sPXih3/view?usp=drive_link" target="_blank">AEC 2 (1)</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1LHYM2pxkgMHaw0ao7nuYAlO56Ep2-lBe/view?usp=drive_link" target="_blank">AEC 2 (2)</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1K1Qn-e0pzXIQ7MSp7hXdK_y5XLGaBYmZ/view?usp=drive_link" target="_blank">DSC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1_MsFMrxuvk7eQrElC0A0k_7RjLa4450h/view?usp=drive_link" target="_blank">DSC 2</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1T7alRNB0mZWb4hP7am2n2U_asoSaZJBr/view?usp=drive_link" target="_blank">DSC 3</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1ZWuWjxYFcLAKQuyisLXGmaR12qGt3wI_/view?usp=drive_link" target="_blank">MDC</a></div>
+  </div>
+  <div class="folder-label">SEM 3</div>
+  <div class="nested">
+    <div class="module"><a href="https://drive.google.com/file/d/1GhWMIcOUTzETZXM4GmbMBpb60QJiGcDG/view?usp=drive_link" target="_blank">DSC 1</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1e_AvrZOstb_l08-GDti0e4SouhhefDib/view?usp=drive_link" target="_blank">DSC 2</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1_FTFmmrXKyP3q39GoESAQjD3_xeU8Bln/view?usp=drive_link" target="_blank">DSC 3</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1Vlrk73Lf6bvTbt1qajM8ZpmlpYdt5uj9/view?usp=drive_link" target="_blank">DSE</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1XMttEgMV8sSmuJl_WQ2YCKh4CjG-MTeN/view?usp=sharing" target="_blank">MDC</a></div>
+    <div class="module"><a href="https://drive.google.com/file/d/1dVCbVEhhE91I7kmOPWVnk1_-NJUPIBjm/view?usp=drive_link" target="_blank">VAC</a></div>
+  </div>
+  <div class="folder-label">SEM 4</div>
+  <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+  <div class="folder-label">SEM 5</div>
+  <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+  <div class="folder-label">SEM 6</div>
+  <div class="nested"><div class="module">🚧 Not updated. It will update soon.</div></div>
+</div>
+
+<h5> WEBSITE PREPARED BY AJU KRISHNA </h5>
+<h6> copyright © 2025 </h6>
+
+</body>
+</html>
