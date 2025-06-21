@@ -1,7 +1,5 @@
 import streamlit as st
 import requests
-import webbrowser
-import re
 import fitz  # PyMuPDF
 
 # --- Configuration ---
@@ -27,6 +25,20 @@ st.markdown("""
                border-radius: 10px; }
     .user { text-align: right; background-color: #004d99; color: white; }
     .bot { text-align: left; background-color: #006600; color: white; }
+    a button {
+        background-color: #00ccff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        width: 100%;
+        cursor: pointer;
+    }
+    a button:hover {
+        background-color: #0099cc;
+    }
     @keyframes flicker {
         0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; }
     }
@@ -36,7 +48,7 @@ st.markdown("""
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
 
-# --- Function: DuckDuckGo Search ---
+# --- DuckDuckGo Answer Search ---
 def duckduckgo_answer(query):
     try:
         url = "https://api.duckduckgo.com/"
@@ -56,12 +68,11 @@ def duckduckgo_answer(query):
             for topic in data["RelatedTopics"]:
                 if isinstance(topic, dict) and topic.get("Text"):
                     return topic["Text"]
-
         return "❌ No exact answer found. Please try rephrasing your question."
     except Exception as e:
         return f"❌ Failed to get an answer.\n\n**Error:** {str(e)}"
 
-# --- Function: Search in PDF ---
+# --- PDF Text Search ---
 def search_pdf(text, query):
     matches = [line.strip() for line in text.split("\n") if query.lower() in line.lower()]
     return "\n".join(matches[:3]) if matches else None
@@ -71,18 +82,24 @@ with col1:
     st.markdown("<div class='sidebar'>", unsafe_allow_html=True)
     st.markdown("## 🔗 Quick Access")
 
-    if st.button("📝 Notes Site"):
-        webbrowser.open_new_tab("https://thunderous-sunflower-7230f3.netlify.app/")
-    if st.button("🏛️ University Site"):
-        webbrowser.open_new_tab("https://keralauniversity.ac.in/")
-    if st.button("📚 Course Site"):
-        webbrowser.open_new_tab("https://slcm.keralauniversity.ac.in/")
-    if st.button("🏫 College Site"):
-        webbrowser.open_new_tab("https://casmvk.kerala.gov.in/")
+    st.markdown("""
+    <a href="https://thunderous-sunflower-7230f3.netlify.app/" target="_blank">
+        <button>📝 Notes Site</button>
+    </a>
+    <a href="https://keralauniversity.ac.in/" target="_blank">
+        <button>🏛️ University Site</button>
+    </a>
+    <a href="https://slcm.keralauniversity.ac.in/" target="_blank">
+        <button>📚 Course Site</button>
+    </a>
+    <a href="https://casmvk.kerala.gov.in/" target="_blank">
+        <button>🏫 College Site</button>
+    </a>
+    """, unsafe_allow_html=True)
+
     if st.button("❓ Help / Guide"):
         st.info("Use sidebar buttons or ask: What is FYUGP, VC of KU, open course site, or upload a PDF and ask from it.")
 
-    # --- PDF Upload ---
     uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
     if uploaded_file:
         doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
@@ -94,7 +111,7 @@ with col1:
 
     st.markdown("</div>", unsafe_allow_html=True)
 
-# --- Main Chat Area ---
+# --- Chat Area ---
 with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
@@ -110,20 +127,7 @@ with col2:
         st.session_state.chat_history.append(("user", user_input))
         user_lower = user_input.lower()
 
-        # --- Open Website Shortcuts ---
-        if "open notes" in user_lower:
-            webbrowser.open_new_tab("https://thunderous-sunflower-7230f3.netlify.app/")
-            answer = "✅ Opening Notes Site..."
-        elif "open university" in user_lower:
-            webbrowser.open_new_tab("https://keralauniversity.ac.in/")
-            answer = "✅ Opening University Site..."
-        elif "open course" in user_lower:
-            webbrowser.open_new_tab("https://slcm.keralauniversity.ac.in/")
-            answer = "✅ Opening Course Site..."
-        elif "open college" in user_lower:
-            webbrowser.open_new_tab("https://casmvk.kerala.gov.in/")
-            answer = "✅ Opening College Site..."
-        elif "vc" in user_lower:
+        if "vc" in user_lower:
             answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
         elif "fyugp" in user_lower:
             answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
