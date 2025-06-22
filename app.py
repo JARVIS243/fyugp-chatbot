@@ -29,51 +29,46 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Completely remove Streamlit header and top padding */
+/* 🧼 Remove top bar and padding */
 header, .st-emotion-cache-18ni7ap, .st-emotion-cache-z5fcl4, .block-container {
-    display: none !important;
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
+header { display: none !important; }
+
+/* 🌑 Background and font */
 html, body, .stApp {
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #111 !important;
+    background-color: #111 !important;
     font-family: 'Segoe UI', sans-serif !important;
     color: white;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* 📱 Sidebar */
-.sidebar {
-    width: 180px;
-    padding: 20px;
-    color: white;
-}
-
-/* 🧊 Chat area with glass effect */
+/* 🧊 Main content area */
 .content {
     flex: 1;
     padding: 30px;
     color: white;
-    min-height: 93vh;
-    max-height: 93vh;
+    min-height: 90vh;
     overflow-y: auto;
     border-radius: 16px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.04);
 }
 
-/* ✨ Dynamic Gradient Title */
+/* ✨ Title with gradient */
 .title {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    margin-top: 0;
+    margin-top: 0px;
+    margin-bottom: 10px;
     background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: glowText 6s ease infinite;
+    animation: glowText 5s ease infinite;
 }
 
 /* 📘 Subtitle */
@@ -81,17 +76,14 @@ html, body, .stApp {
     text-align: center;
     color: #ccc;
     margin-bottom: 25px;
-    font-size: 16px;
 }
 
-/* 💬 Chat Messages */
+/* 💬 Chat messages */
 .message {
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: rgba(255, 255, 255, 0.08);
     padding: 14px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     border-radius: 10px;
-    font-size: 15px;
-    line-height: 1.5;
 }
 .user {
     text-align: right;
@@ -104,7 +96,7 @@ html, body, .stApp {
     color: white;
 }
 
-/* 🔘 Buttons: Glow + Project Effect */
+/* 🔘 Buttons */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
@@ -117,7 +109,7 @@ a button {
     margin-bottom: 10px;
     width: 100%;
     cursor: pointer;
-    box-shadow: 0 0 6px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -127,7 +119,7 @@ a button:hover {
     background-position: right center;
 }
 
-/* ✨ Title text glow animation */
+/* ✨ Glow animation for title */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -138,6 +130,19 @@ a button:hover {
 
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
+
+with col1:
+    st.markdown("<div class='sidebar'>", unsafe_allow_html=True)
+    # ... sidebar content ...
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with col2:
+    st.markdown("<div class='content'>", unsafe_allow_html=True)
+    st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
+    # ... rest of chatbot UI ...
+    st.markdown("</div>", unsafe_allow_html=True)
+
 
 # --- DuckDuckGo Answer Search ---
 def duckduckgo_answer(query):
