@@ -157,6 +157,6 @@ with col2:
     st.markdown("""
     <hr style="margin-top: 40px; border: 0.5px solid #555;">
     <div style="text-align:center; color:#888; font-size: 14px; margin-top: 10px;">
-        © 2025 Aju Publishers. All rights reserved.
+        © 2025 Published by Aju Krishna. All rights reserved.
     </div>
 """, unsafe_allow_html=True)
