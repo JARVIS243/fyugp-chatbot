@@ -121,7 +121,7 @@ with col2:
         css_class = "user" if role == "user" else "bot"
         st.markdown(f"<div class='message {css_class}'>{msg}</div>", unsafe_allow_html=True)
 
-    user_input = st.chat_input("Type your question here...")
+   user_input = st.chat_input("Type your question here...")
 
    if user_input:
     st.session_state.chat_history.append(("user", user_input))
