@@ -1,6 +1,10 @@
 import streamlit as st
 import requests
 import fitz  # PyMuPDF
+from datetime import datetime, timedelta, timezone
+
+# --- IST Timezone Setup ---
+IST = timezone(timedelta(hours=5, minutes=30))
 
 # --- Configuration ---
 st.set_page_config(page_title="FYUGP Assistant", layout="wide")
@@ -10,6 +14,20 @@ if "chat_history" not in st.session_state:
 
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
+
+if "greeted" not in st.session_state:
+    st.session_state.greeted = False
+
+# --- Get Internet Date and Time ---
+def get_internet_datetime():
+    try:
+        res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=1)
+        if res.status_code == 200:
+            dt = datetime.fromisoformat(res.json()["datetime"])
+            return dt.strftime("%d %b %Y, %I:%M %p")
+    except:
+        pass
+    return datetime.now(IST).strftime("%d %b %Y, %I:%M %p")
 
 # --- Custom CSS ---
 st.markdown("""
@@ -99,7 +117,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     if st.button("❓ Help / Guide"):
-        st.info("Use sidebar buttons or ask: What is FYUGP, VC of KU, open course site, or upload a PDF and ask from it.")
+        st.info("Use sidebar buttons to use the websites or ask your doubts in the search bar (use small letters) and upload a PDF and ask from it.")
 
     uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
     if uploaded_file:
@@ -116,7 +134,12 @@ with col1:
 with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {get_internet_datetime()}</div>", unsafe_allow_html=True)
+
+    if not st.session_state.greeted:
+        st.success("👋 Welcome to FYUGP Assistant! Ask your questions or upload a PDF to begin.")
+        st.session_state.greeted = True
 
     for role, msg in st.session_state.chat_history:
         css_class = "user" if role == "user" else "bot"
@@ -157,4 +180,5 @@ with col2:
         st.session_state.chat_history.append(("bot", answer))
         st.rerun()
 
+    st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
