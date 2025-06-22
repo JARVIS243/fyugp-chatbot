@@ -127,8 +127,8 @@ with col2:
         st.session_state.chat_history.append(("user", user_input))
         user_lower = user_input.lower()
 
-        if "vc" in user_lower:
-            answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
+        if "who is aju ?" in user_lower:
+            answer = "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like "Attendix", Aju shows both dedication and curiosity in every project. The FYUGP Assistant is a smart chatbot interface designed and developed by Aju to help students easily access semester-wise notes, model papers, and important university links—through one intelligent and interactive platform."
         elif "fyugp" in user_lower:
             answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
         elif st.session_state.pdf_text:
