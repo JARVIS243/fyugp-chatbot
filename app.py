@@ -17,103 +17,83 @@ if "chat_history" not in st.session_state:
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
 
-# --- Theme Toggle ---
-theme = st.sidebar.selectbox("🎨 Theme", ["Dark", "Light", "Gamer", "Minimal", "Study Mode"])
+if "theme" not in st.session_state:
+    st.session_state.theme = "dark"
 
-if theme == "Light":
-    st.markdown("""
-        <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #000000;
-            --box-color: rgba(0, 0, 0, 0.05);
-            --user-bg: #e6f2ff;
-            --bot-bg: #e9ffe9;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-elif theme == "Gamer":
-    st.markdown("""
-        <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #39ff14;
-            --box-color: #1f1f1f;
-            --user-bg: #262626;
-            --bot-bg: #003300;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-elif theme == "Minimal":
-    st.markdown("""
-        <style>
-        :root {
-            --bg-color: #f9f9f9;
-            --text-color: #222222;
-            --box-color: #eeeeee;
-            --user-bg: #dddddd;
-            --bot-bg: #cccccc;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-elif theme == "Study Mode":
-    st.markdown("""
-        <style>
-        :root {
-            --bg-color: #fefae0;
-            --text-color: #333333;
-            --box-color: #fef6c2;
-            --user-bg: #fdd835;
-            --bot-bg: #aed581;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-else:
-    st.markdown("""
-        <style>
-        :root {
-            --bg-color: #111;
-            --text-color: white;
-            --box-color: rgba(255, 255, 255, 0.05);
-            --user-bg: #004d99;
-            --bot-bg: #006600;
-        }
-        </style>
-    """, unsafe_allow_html=True)
+# --- Themes Dictionary ---
+themes = {
+    "dark": {
+        "--bg-color": "#111",
+        "--text-color": "white",
+        "--box-color": "rgba(255, 255, 255, 0.05)",
+        "--user-bg": "#004d99",
+        "--bot-bg": "#006600"
+    },
+    "light": {
+        "--bg-color": "#fff",
+        "--text-color": "#111",
+        "--box-color": "#f2f2f2",
+        "--user-bg": "#cce5ff",
+        "--bot-bg": "#d4edda"
+    },
+    "gamer": {
+        "--bg-color": "#000",
+        "--text-color": "#0f0",
+        "--box-color": "#111",
+        "--user-bg": "#1111aa",
+        "--bot-bg": "#117711"
+    },
+    "minimal": {
+        "--bg-color": "#fdfdfd",
+        "--text-color": "#222",
+        "--box-color": "#eee",
+        "--user-bg": "#bbb",
+        "--bot-bg": "#ccc"
+    },
+    "study": {
+        "--bg-color": "#faf3e0",
+        "--text-color": "#333",
+        "--box-color": "#fff3",
+        "--user-bg": "#e0bbff",
+        "--bot-bg": "#ffdfba"
+    }
+}
 
-# --- Get Internet Date and Time ---
-def get_internet_datetime():
-    try:
-        res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=1)
-        if res.status_code == 200:
-            dt = datetime.fromisoformat(res.json()["datetime"])
-            return dt.strftime("%d %b %Y, %I:%M:%S %p")  # ⏱️ With seconds
-    except:
-        pass
-    return datetime.now(IST).strftime("%d %b %Y, %I:%M:%S %p")  # ⏱️ With seconds
+# --- Theme Selector ---
+st.sidebar.markdown("### 🎨 Choose Theme")
+selected_theme = st.sidebar.radio("", list(themes.keys()), index=list(themes.keys()).index(st.session_state.theme))
+st.session_state.theme = selected_theme
+
+# --- Generate CSS for Theme ---
+css_variables = ":root {\n"
+for var, val in themes[selected_theme].items():
+    css_variables += f"    {var}: {val};\n"
+css_variables += "}"
 
 # --- Custom CSS ---
-st.markdown("""
+st.markdown(f"""
     <style>
-    body { background: var(--bg-color); }
-    .css-18ni7ap.e8zbici2 { background: var(--bg-color); }
+    {css_variables}
 
-    .sidebar {
+    body {{ background: var(--bg-color); }}
+    .css-18ni7ap.e8zbici2 {{ background: var(--bg-color); }}
+
+    .sidebar {{
         width: 180px;
         padding: 20px;
         color: var(--text-color);
-    }
+    }}
 
-    .content {
+    .content {{
         flex: 1;
         padding: 30px;
         color: var(--text-color);
         border-radius: 15px;
         backdrop-filter: blur(10px);
         background-color: var(--box-color);
-    }
+    }}
 
-    .title {
+    .title {{
         font-size: 36px;
         font-weight: bold;
         text-align: center;
@@ -122,34 +102,34 @@ st.markdown("""
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: titleGlow 9s ease infinite;
-    }
+    }}
 
-    .subtitle {
+    .subtitle {{
         text-align: center;
         color:#aaa;
         margin-bottom: 30px;
-    }
+    }}
 
-    .message {
+    .message {{
         background-color: #333;
         padding: 15px;
         margin-bottom: 10px;
         border-radius: 10px;
-    }
+    }}
 
-    .user {
+    .user {{
         text-align: right;
         background-color: var(--user-bg);
         color: var(--text-color);
-    }
+    }}
 
-    .bot {
+    .bot {{
         text-align: left;
         background-color: var(--bot-bg);
         color: var(--text-color);
-    }
+    }}
 
-    a button {
+    a button {{
         background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
         background-size: 300% 300%;
         color: black;
@@ -162,19 +142,19 @@ st.markdown("""
         cursor: pointer;
         box-shadow: 0 0 6px rgba(0, 255, 255, 0.15);
         transition: all 0.3s ease;
-    }
+    }}
 
-    a button:hover {
+    a button:hover {{
         transform: translateY(-4px);
         box-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
         background-position: right center;
-    }
+    }}
 
-    @keyframes titleGlow {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+    @keyframes titleGlow {{
+        0% {{ background-position: 0% 50%; }}
+        50% {{ background-position: 100% 50%; }}
+        100% {{ background-position: 0% 50%; }}
+    }}
     </style>
 """, unsafe_allow_html=True)
 
