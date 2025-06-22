@@ -133,6 +133,7 @@ with col2:
             answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
         elif "who is aju" or "who is invented you" in user_lower:
             answer = (
+                "AJU KRISHNA."\n
                 "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
                 "Aju lives in Eravankara."
                 "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science. "
