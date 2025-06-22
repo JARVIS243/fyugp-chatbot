@@ -1,8 +1,11 @@
 import streamlit as st
 import requests
 import fitz  # PyMuPDF
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import random
+
+# --- IST Timezone Setup ---
+IST = timezone(timedelta(hours=5, minutes=30))
 
 # --- Configuration ---
 st.set_page_config(page_title="FYUGP Assistant", layout="wide")
@@ -125,7 +128,7 @@ with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
     st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {datetime.now().strftime('%d %b %Y, %I:%M %p')}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {datetime.now(IST).strftime('%d %b %Y, %I:%M %p')}</div>", unsafe_allow_html=True)
 
     if not st.session_state.greeted:
         st.success("👋 Welcome to FYUGP Assistant! Ask your questions or upload a PDF to begin.")
