@@ -37,6 +37,11 @@ st.markdown("""
         color: white;
     }
 
+    /* 🔒 Remove Streamlit default header bar */
+    header, .st-emotion-cache-1avcm0n, .st-emotion-cache-6qob1r {
+        display: none !important;
+    }
+
     .css-18ni7ap.e8zbici2 { background: #0f0f0f; }
 
     .sidebar, .content {
