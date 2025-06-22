@@ -29,45 +29,36 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* 🔥 Remove Streamlit's top space and black bar */
-header, .block-container, [data-testid="stDecoration"] {
+/* ✅ Remove Streamlit top header and decoration bar */
+header, [data-testid="stDecoration"] {
     display: none !important;
-    padding-top: 0 !important;
-    margin-top: 0 !important;
 }
 
-/* 🌙 Base layout */
-body, html, .stApp {
+/* ✅ Clean background and font */
+html, body, .stApp {
     background-color: #111 !important;
-    color: white !important;
     font-family: 'Segoe UI', sans-serif !important;
+    color: white !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* 🧊 Main content with glass blur effect */
-.content {
-    flex: 1;
-    padding: 30px;
-    color: white;
-    min-height: 90vh;
-    overflow-y: auto;
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.05);
+/* ✅ Ensure main container is visible */
+.block-container {
+    padding-top: 1rem !important;
 }
 
-/* ✨ Glowing animated title */
+/* ✨ Title with animated gradient text */
 .title {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
+    margin-top: 0;
     background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 5s ease infinite;
-    margin-top: 0;
 }
 
 /* 📘 Subtitle */
@@ -77,9 +68,18 @@ body, html, .stApp {
     margin-bottom: 30px;
 }
 
-/* 💬 Chat messages */
+/* 🧊 Glass-style content area */
+.content {
+    padding: 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.05);
+    min-height: 85vh;
+}
+
+/* 💬 Chat bubbles */
 .message {
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.07);
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
@@ -95,7 +95,7 @@ body, html, .stApp {
     color: white;
 }
 
-/* 🌟 Buttons with hover and glass border */
+/* 🔘 Button style with glow & hover */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
@@ -104,7 +104,6 @@ a button {
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     font-weight: bold;
-    font-size: 15px;
     margin-bottom: 10px;
     width: 100%;
     cursor: pointer;
@@ -117,7 +116,7 @@ a button:hover {
     background-position: right center;
 }
 
-/* ✨ Title animation */
+/* ✨ Glow animation */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
