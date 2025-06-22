@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 import fitz  # PyMuPDF
 from datetime import datetime
 import random
