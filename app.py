@@ -2,12 +2,14 @@ import streamlit as st
 import requests
 import fitz  # PyMuPDF
 from datetime import datetime, timedelta, timezone
+from streamlit_autorefresh import st_autorefresh  # NEW
 
 # --- IST Timezone Setup ---
 IST = timezone(timedelta(hours=5, minutes=30))
 
 # --- Configuration ---
 st.set_page_config(page_title="FYUGP Assistant", layout="wide")
+st_autorefresh(interval=1000, key="realtime_refresh")  # Refresh every 1 second
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -21,10 +23,10 @@ def get_internet_datetime():
         res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=1)
         if res.status_code == 200:
             dt = datetime.fromisoformat(res.json()["datetime"])
-            return dt.strftime("%d %b %Y, %I:%M %p")
+            return dt.strftime("%d %b %Y, %I:%M:%S %p")  # ⏱️ With seconds
     except:
         pass
-    return datetime.now(IST).strftime("%d %b %Y, %I:%M %p")
+    return datetime.now(IST).strftime("%d %b %Y, %I:%M:%S %p")  # ⏱️ With seconds
 
 # --- Custom CSS ---
 st.markdown("""
@@ -88,33 +90,20 @@ st.markdown("""
         background-size: 300% 300%;
         color: black;
         padding: 10px 15px;
-        border: 1px solid rgba(255, 255, 255, 0.3); /* Light glow border */
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 8px;
         font-weight: bold;
         margin-bottom: 10px;
         width: 100%;
         cursor: pointer;
-        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15); /* Glow shadow */
+        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15);
         transition: all 0.3s ease;
     }
 
     a button:hover {
-        transform: translateY(-4px); /* Slight projection */
+        transform: translateY(-4px);
         box-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
         background-position: right center;
-    }
-
-    @keyframes flicker {
-        0% { opacity: 1; }
-        50% { opacity: 0.7; }
-        100% { opacity: 1; }
-    }
-
-    /* 🌈 Gradient animation keyframes */
-    @keyframes animateGradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
     }
 
     @keyframes titleGlow {
@@ -178,7 +167,6 @@ with col1:
     </a>
     """, unsafe_allow_html=True)
 
-    # --- Toggle Help Section ---
     if "help_visible" not in st.session_state:
         st.session_state.help_visible = False
 
@@ -188,7 +176,6 @@ with col1:
     if st.session_state.help_visible:
         st.info("Use sidebar buttons to use the websites or ask your doubts in the search bar (use small letters) and upload a PDF and ask from it.")
 
-    # --- PDF Upload ---
     uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
     if uploaded_file:
         doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
