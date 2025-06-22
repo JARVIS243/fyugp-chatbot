@@ -121,36 +121,35 @@ with col2:
         css_class = "user" if role == "user" else "bot"
         st.markdown(f"<div class='message {css_class}'>{msg}</div>", unsafe_allow_html=True)
 
-   user_input = st.chat_input("Type your question here...")
+    user_input = st.chat_input("Type your question here...")
 
-   if user_input:
-    st.session_state.chat_history.append(("user", user_input))
-    user_lower = user_input.lower()
+    if user_input:
+        st.session_state.chat_history.append(("user", user_input))
+        user_lower = user_input.lower()
 
-    if "vc" in user_lower:
-        answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
-    elif "fyugp" in user_lower:
-        answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
-    elif "who is aju" in user_lower:
-        answer = (
-            "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
-            "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
-            "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
-            "especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like 'Attendix', "
-            "Aju shows both dedication and curiosity in every project. The FYUGP Assistant is a smart chatbot interface designed and developed by Aju "
-            "to help students easily access semester-wise notes, model papers, and important university links—through one intelligent and interactive platform."
-        )
-    elif st.session_state.pdf_text:
-        pdf_answer = search_pdf(st.session_state.pdf_text, user_input)
-        if pdf_answer:
-            answer = f"📄 From PDF:\n\n{pdf_answer}"
+        if "vc" in user_lower:
+            answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
+        elif "fyugp" in user_lower:
+            answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
+        elif "who is aju" in user_lower:
+            answer = (
+                "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
+                "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
+                "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
+                "especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like 'Attendix', "
+                "Aju shows both dedication and curiosity in every project. The FYUGP Assistant is a smart chatbot interface designed and developed by Aju "
+                "to help students easily access semester-wise notes, model papers, and important university links—through one intelligent and interactive platform."
+            )
+        elif st.session_state.pdf_text:
+            pdf_answer = search_pdf(st.session_state.pdf_text, user_input)
+            if pdf_answer:
+                answer = f"📄 From PDF:\n\n{pdf_answer}"
+            else:
+                answer = duckduckgo_answer(user_input)
         else:
             answer = duckduckgo_answer(user_input)
-    else:
-        answer = duckduckgo_answer(user_input)
 
-    st.session_state.chat_history.append(("bot", answer))
-    st.rerun()
+        st.session_state.chat_history.append(("bot", answer))
+        st.rerun()
 
-st.markdown("</div>", unsafe_allow_html=True)
-
+    st.markdown("</div>", unsafe_allow_html=True)
