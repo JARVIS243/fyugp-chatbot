@@ -19,10 +19,10 @@ if "pdf_text" not in st.session_state:
 if "greeted" not in st.session_state:
     st.session_state.greeted = False
 
-# --- Get Internet Date and Time ---
+# --- Get Internet Date and Time (fast timeout) ---
 def get_internet_datetime():
     try:
-        res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=3)
+        res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=1)
         if res.status_code == 200:
             dt = datetime.fromisoformat(res.json()["datetime"])
             return dt.strftime("%d %b %Y, %I:%M %p")
@@ -67,7 +67,7 @@ st.markdown("""
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
 
-# --- DuckDuckGo Answer Search ---
+# --- DuckDuckGo Answer Search (speed optimized) ---
 def duckduckgo_answer(query):
     try:
         url = "https://api.duckduckgo.com/"
@@ -78,7 +78,7 @@ def duckduckgo_answer(query):
             "no_html": 1,
             "skip_disambig": 1
         }
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=1)  # faster timeout
         data = response.json()
 
         if data.get("AbstractText"):
