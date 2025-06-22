@@ -17,56 +17,20 @@ if "chat_history" not in st.session_state:
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
 
-if "theme" not in st.session_state:
-    st.session_state.theme = "dark"
+# --- Set Default Theme ---
+st.session_state.theme = "dark"
 
-# --- Themes Dictionary ---
-themes = {
-    "dark": {
-        "--bg-color": "#111",
-        "--text-color": "white",
-        "--box-color": "rgba(255, 255, 255, 0.05)",
-        "--user-bg": "#004d99",
-        "--bot-bg": "#006600"
-    },
-    "light": {
-        "--bg-color": "#fff",
-        "--text-color": "#111",
-        "--box-color": "#f2f2f2",
-        "--user-bg": "#cce5ff",
-        "--bot-bg": "#d4edda"
-    },
-    "gamer": {
-        "--bg-color": "#000",
-        "--text-color": "#0f0",
-        "--box-color": "#111",
-        "--user-bg": "#1111aa",
-        "--bot-bg": "#117711"
-    },
-    "minimal": {
-        "--bg-color": "#fdfdfd",
-        "--text-color": "#222",
-        "--box-color": "#eee",
-        "--user-bg": "#bbb",
-        "--bot-bg": "#ccc"
-    },
-    "study": {
-        "--bg-color": "#faf3e0",
-        "--text-color": "#333",
-        "--box-color": "#fff3",
-        "--user-bg": "#e0bbff",
-        "--bot-bg": "#ffdfba"
-    }
+# --- CSS Variables for Dark Theme ---
+theme_vars = {
+    "--bg-color": "#111",
+    "--text-color": "white",
+    "--box-color": "rgba(255, 255, 255, 0.05)",
+    "--user-bg": "#004d99",
+    "--bot-bg": "#006600"
 }
 
-# --- Theme Selector ---
-st.sidebar.markdown("### 🎨 Choose Theme")
-selected_theme = st.sidebar.radio("", list(themes.keys()), index=list(themes.keys()).index(st.session_state.theme))
-st.session_state.theme = selected_theme
-
-# --- Generate CSS for Theme ---
 css_variables = ":root {\n"
-for var, val in themes[selected_theme].items():
+for var, val in theme_vars.items():
     css_variables += f"    {var}: {val};\n"
 css_variables += "}"
 
