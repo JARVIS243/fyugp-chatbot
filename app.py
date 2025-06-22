@@ -88,18 +88,18 @@ st.markdown("""
         background-size: 300% 300%;
         color: white;
         padding: 10px 15px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Light glow border */
         border-radius: 8px;
         font-weight: bold;
         margin-bottom: 10px;
         width: 100%;
         cursor: pointer;
-        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15);
+        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15); /* Glow shadow */
         transition: all 0.3s ease;
     }
 
     a button:hover {
-        transform: translateY(-4px);
+        transform: translateY(-4px); /* Slight projection */
         box-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
         background-position: right center;
     }
