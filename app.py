@@ -29,10 +29,13 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* 🔧 Remove Streamlit top bar and padding */
-header, .st-emotion-cache-18ni7ap {
-    display: none !important;
+/* 🔧 Remove Streamlit top bar, footer, and padding */
+header, footer, .st-emotion-cache-18ni7ap, .block-container {
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+    margin-top: 0rem !important;
 }
+header { display: none !important; }
 
 /* 🌐 Base font and body */
 body {
@@ -71,6 +74,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 5s ease infinite;
+    margin-top: 0px;
 }
 
 /* 📄 Subtitle */
@@ -128,6 +132,7 @@ a button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # --- Layout ---
