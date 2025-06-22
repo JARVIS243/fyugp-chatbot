@@ -86,7 +86,7 @@ st.markdown("""
     a button {
         background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
         background-size: 300% 300%;
-        color: white;
+        color: black;
         padding: 10px 15px;
         border: 1px solid rgba(255, 255, 255, 0.3); /* Light glow border */
         border-radius: 8px;
