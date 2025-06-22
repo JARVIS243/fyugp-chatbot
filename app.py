@@ -48,14 +48,14 @@ st.markdown("""
     }
 
     .title {
-        font-size: 32px;
+        font-size: 36px;
         font-weight: bold;
         text-align: center;
         background: linear-gradient(270deg, #00ccff, #00ff99, #ff0099, #00ccff);
         background-size: 600% 600%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        animation: titleGlow 6s ease infinite;
+        animation: titleGlow 9s ease infinite;
     }
 
     .subtitle {
