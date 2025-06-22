@@ -131,19 +131,6 @@ a button:hover {
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
 
-with col1:
-    st.markdown("<div class='sidebar'>", unsafe_allow_html=True)
-    # ... sidebar content ...
-    st.markdown("</div>", unsafe_allow_html=True)
-
-with col2:
-    st.markdown("<div class='content'>", unsafe_allow_html=True)
-    st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
-    # ... rest of chatbot UI ...
-    st.markdown("</div>", unsafe_allow_html=True)
-
-
 # --- DuckDuckGo Answer Search ---
 def duckduckgo_answer(query):
     try:
