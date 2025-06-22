@@ -104,6 +104,12 @@ st.markdown("""
         background-position: right center;
     }
 
+    @keyframes flicker {
+        0% { opacity: 1; }
+        50% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+
     @keyframes titleGlow {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
