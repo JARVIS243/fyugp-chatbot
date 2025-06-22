@@ -110,6 +110,13 @@ st.markdown("""
         100% { opacity: 1; }
     }
 
+    /* 🌈 Gradient animation keyframes */
+    @keyframes animateGradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
     @keyframes titleGlow {
         0% { background-position: 0% 50%; }
         50% { background-position: 100% 50%; }
