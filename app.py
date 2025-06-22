@@ -29,43 +29,42 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Remove top bar and spacing */
-header, [data-testid="stDecoration"] {
-    display: none !important;
-}
-.block-container {
+/* ✅ Remove top padding/margin from Streamlit's layout */
+.st-emotion-cache-18ni7ap, .block-container, header {
     padding-top: 0rem !important;
+    margin-top: 0rem !important;
 }
+header { display: none !important; }
 
-/* ✅ Set base background and font */
-html, body, .stApp {
-    background: #111 !important;
+/* ✅ Body background and font */
+body {
+    background-color: #111 !important;
     font-family: 'Segoe UI', sans-serif !important;
-    color: white !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    color: white;
 }
 
-/* ✅ Sidebar */
+/* ✅ Sidebar style */
 .sidebar {
     width: 180px;
     padding: 20px;
     color: white;
 }
 
-/* ✅ Content box with glass effect */
+/* ✅ Main content area with glass effect */
 .content {
     flex: 1;
     padding: 30px;
     color: white;
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.04);
-    min-height: 88vh;
+    min-height: 92vh;
     overflow-y: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    margin-top: 0px !important;
 }
 
-/* ✅ Gradient animated title */
+/* ✅ Title with glow animation */
 .title {
     font-size: 32px;
     font-weight: bold;
@@ -75,7 +74,7 @@ html, body, .stApp {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 5s ease infinite;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 /* ✅ Subtitle */
@@ -85,7 +84,7 @@ html, body, .stApp {
     margin-bottom: 30px;
 }
 
-/* ✅ Chat Messages */
+/* ✅ Chat message bubbles */
 .message {
     background-color: rgba(255, 255, 255, 0.07);
     padding: 15px;
@@ -103,29 +102,28 @@ html, body, .stApp {
     color: white;
 }
 
-/* ✅ Buttons with glow and hover projection */
+/* ✅ Button styles with glow and lift effect */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     color: white;
     padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
     font-weight: bold;
     margin-bottom: 10px;
     width: 100%;
     cursor: pointer;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
-
 a button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 14px rgba(0, 255, 255, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
     background-position: right center;
 }
 
-/* ✨ Title glow animation */
+/* ✨ Glow animation for title */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
