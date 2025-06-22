@@ -29,30 +29,33 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Remove all top padding/margin including invisible Streamlit blocks */
-.st-emotion-cache-18ni7ap,
-.block-container,
-header {
-    padding-top: 0 !important;
+/* ✅ Remove all top padding/margin from Streamlit blocks */
+html, body, .stApp {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #111 !important;
+}
+
+/* ✅ Force remove Streamlit header and top blank space */
+header, .block-container, .main {
     margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 header { display: none !important; }
 
-/* ✅ Body Setup */
-html, body {
-    background: #111 !important;
-    color: white !important;
+/* ✅ Remove any padding around columns */
+.st-emotion-cache-z5fcl4 {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* ✅ Body font and layout */
+body {
     font-family: 'Segoe UI', sans-serif !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    color: white;
 }
 
-/* ✅ Full page container fix */
-.block-container {
-    padding: 0 1.5rem 2rem 1.5rem !important;
-}
-
-/* ✅ Glass effect content box */
+/* ✅ Content area */
 .content {
     flex: 1;
     padding: 30px;
@@ -61,11 +64,10 @@ html, body {
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.05);
     min-height: 90vh;
-    max-height: 90vh;
     overflow-y: auto;
 }
 
-/* ✅ Title with animated gradient */
+/* ✅ Title styling */
 .title {
     font-size: 32px;
     font-weight: bold;
@@ -75,7 +77,7 @@ html, body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 5s ease infinite;
-    margin-top: 0;
+    margin-top: 0px;
 }
 
 /* ✅ Subtitle */
@@ -85,7 +87,7 @@ html, body {
     margin-bottom: 30px;
 }
 
-/* ✅ Chat message bubbles */
+/* ✅ Chat messages */
 .message {
     background-color: rgba(255, 255, 255, 0.07);
     padding: 15px;
@@ -103,14 +105,14 @@ html, body {
     color: white;
 }
 
-/* ✅ Sidebar area */
+/* ✅ Sidebar */
 .sidebar {
     width: 180px;
     padding: 20px;
     color: white;
 }
 
-/* ✅ Buttons with glass glow and lift on hover */
+/* ✅ Buttons with glass glow + lift on hover */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
@@ -131,7 +133,7 @@ a button:hover {
     background-position: right center;
 }
 
-/* ✅ Glow animation for title text */
+/* ✅ Glow animation for title */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -139,10 +141,6 @@ a button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
-
-
-
-
 
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
