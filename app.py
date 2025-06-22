@@ -171,9 +171,17 @@ with col1:
     </a>
     """, unsafe_allow_html=True)
 
+    # --- Toggle Help Section ---
+    if "help_visible" not in st.session_state:
+        st.session_state.help_visible = False
+
     if st.button("❓ Help / Guide"):
+        st.session_state.help_visible = not st.session_state.help_visible
+
+    if st.session_state.help_visible:
         st.info("Use sidebar buttons to use the websites or ask your doubts in the search bar (use small letters) and upload a PDF and ask from it.")
 
+    # --- PDF Upload ---
     uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
     if uploaded_file:
         doc = fitz.open(stream=uploaded_file.read(), filetype="pdf")
