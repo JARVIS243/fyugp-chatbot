@@ -45,12 +45,16 @@ st.markdown("""
     .css-18ni7ap.e8zbici2 { background: #0f0f0f; }
 
     .sidebar, .content {
-        backdrop-filter: blur(8px);
-        background-color: rgba(255, 255, 255, 0.05);
-        border-radius: 15px;
-        padding: 20px;
-        color: white;
-    }
+    flex: 1;
+    padding: 30px;
+    color: white;
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    min-height: 85vh;
+    max-height: 85vh;
+    overflow-y: auto;
+}
 
     .title {
         font-size: 36px;
