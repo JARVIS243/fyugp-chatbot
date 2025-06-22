@@ -2,7 +2,6 @@ import streamlit as st
 import requests
 import fitz  # PyMuPDF
 from datetime import datetime, timedelta, timezone
-import random
 
 # --- IST Timezone Setup ---
 IST = timezone(timedelta(hours=5, minutes=30))
@@ -15,20 +14,6 @@ if "chat_history" not in st.session_state:
 
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
-
-if "greeted" not in st.session_state:
-    st.session_state.greeted = False
-
-# --- Get Internet Date and Time ---
-def get_internet_datetime():
-    try:
-        res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=1)
-        if res.status_code == 200:
-            dt = datetime.fromisoformat(res.json()["datetime"])
-            return dt.strftime("%d %b %Y, %I:%M %p")
-    except:
-        pass
-    return datetime.now(IST).strftime("%d %b %Y, %I:%M %p")
 
 # --- Custom CSS ---
 st.markdown("""
@@ -117,7 +102,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     if st.button("❓ Help / Guide"):
-        st.info("Use sidebar buttons to use the websites or ask your doubts in the search bar (use small letters) and upload a PDF and ask from it.")
+        st.info("Use sidebar buttons or ask: What is FYUGP, VC of KU, open course site, or upload a PDF and ask from it.")
 
     uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
     if uploaded_file:
@@ -134,18 +119,7 @@ with col1:
 with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {get_internet_datetime()}</div>", unsafe_allow_html=True)
-
-    if not st.session_state.greeted:
-        st.success("👋 Welcome to FYUGP Assistant! Ask your questions or upload a PDF to begin.")
-        st.session_state.greeted = True
-
-    st.info(random.choice([
-        "💡 Tip: Use small letters when typing questions for better accuracy.",
-        "📘 Tip: You can upload any notes PDF and ask questions from it!",
-        "🧠 Tip: Review your notes weekly to boost memory retention."
-    ]))
+    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
 
     for role, msg in st.session_state.chat_history:
         css_class = "user" if role == "user" else "bot"
@@ -161,19 +135,6 @@ with col2:
             answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
         elif "fyugp" in user_lower:
             answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
-        elif "who is aju" in user_lower:
-            answer = (
-                "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
-                "Aju lived in Eravankara. Instagram id : "
-                "<a href='https://www.instagram.com/aaram_thamburan__?igsh=MTJqangxaXhwYTlhaA==' target='_blank'>@aaram_thamburan__</a> "
-                "Follow him on instagram. "
-                "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science."
-                "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
-                "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
-                "especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like 'Attendix', "
-                "Aju shows both dedication and curiosity in every project. The FYUGP Assistant is a smart chatbot interface designed and developed by Aju "
-                "to help students easily access semester-wise notes, model papers, and important university links—through one intelligent and interactive platform."
-            )
         elif st.session_state.pdf_text:
             pdf_answer = search_pdf(st.session_state.pdf_text, user_input)
             if pdf_answer:
@@ -184,6 +145,6 @@ with col2:
             answer = duckduckgo_answer(user_input)
 
         st.session_state.chat_history.append(("bot", answer))
+        st.rerun()
 
-    st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
