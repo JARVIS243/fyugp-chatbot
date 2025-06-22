@@ -136,9 +136,9 @@ def duckduckgo_answer(query):
             for topic in data["RelatedTopics"]:
                 if isinstance(topic, dict) and topic.get("Text"):
                     return topic["Text"]
-        return "❌ No exact answer found. Please try rephrasing your question."
+        return "🥺 No exact answer found. Please try rephrasing your question."
     except Exception as e:
-        return f"❌ Failed to get an answer.\n\n**Error:** {str(e)}"
+        return f"😟 Failed to get an answer.\n\n**Error:** {str(e)}"
 
 # --- Fast PDF Search ---
 def search_pdf(text, query):
@@ -170,7 +170,7 @@ with col1:
     if "help_visible" not in st.session_state:
         st.session_state.help_visible = False
 
-    if st.circle("❓ Help / Guide"):
+    if st.button("❓ Help / Guide"):
         st.session_state.help_visible = not st.session_state.help_visible
 
     if st.session_state.help_visible:
