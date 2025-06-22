@@ -29,36 +29,96 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
     <style>
-    body { background: #111; }
-    .css-18ni7ap.e8zbici2 { background: #111; }
-    .sidebar { width: 180px; padding: 20px; color: white; }
-    .content { flex: 1; padding: 30px; color: white; }
-    .title { font-size: 32px; font-weight: bold; color: #00ccff;
-             animation: flicker 4s linear infinite; text-align: center; }
-    .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
-    .message { background-color: #333; padding: 15px; margin-bottom: 10px;
-               border-radius: 10px; }
-    .user { text-align: right; background-color: #004d99; color: white; }
-    .bot { text-align: left; background-color: #006600; color: white; }
-    a button {
-        background-color: #00ccff;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    html, body {
+        font-family: 'Poppins', sans-serif;
+        background: #0f0f0f;
         color: white;
+    }
+
+    .css-18ni7ap.e8zbici2 { background: #0f0f0f; }
+
+    .sidebar, .content {
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 20px;
+        color: white;
+    }
+
+    .title {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(90deg, #00e6e6, #33ccff, #00ffcc);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: movegradient 5s ease infinite;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #ccc;
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .message {
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .user {
+        text-align: right;
+        background-color: rgba(0, 102, 204, 0.2);
+    }
+
+    .bot {
+        text-align: left;
+        background-color: rgba(0, 204, 102, 0.2);
+    }
+
+    a button {
+        background: linear-gradient(135deg, #00ccff, #3366ff, #00ffcc);
+        background-size: 300% 300%;
+        color: white;
+        font-family: 'Poppins', sans-serif;
         padding: 10px 15px;
-        border: none;
-        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
         font-weight: bold;
         margin-bottom: 10px;
         width: 100%;
         cursor: pointer;
+        box-shadow: 0 0 5px rgba(0,255,255,0.2);
+        transition: all 0.3s ease;
     }
+
     a button:hover {
-        background-color: #0099cc;
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 0 12px rgba(0,255,255,0.5);
     }
+
     @keyframes flicker {
-        0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; }
+        0% { opacity: 1; }
+        50% { opacity: 0.8; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes movegradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
