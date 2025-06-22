@@ -19,6 +19,17 @@ if "pdf_text" not in st.session_state:
 if "greeted" not in st.session_state:
     st.session_state.greeted = False
 
+# --- Get Internet Date and Time ---
+def get_internet_datetime():
+    try:
+        res = requests.get("https://worldtimeapi.org/api/timezone/Asia/Kolkata", timeout=3)
+        if res.status_code == 200:
+            dt = datetime.fromisoformat(res.json()["datetime"])
+            return dt.strftime("%d %b %Y, %I:%M %p")
+    except:
+        pass
+    return datetime.now(IST).strftime("%d %b %Y, %I:%M %p")
+
 # --- Custom CSS ---
 st.markdown("""
     <style>
@@ -128,7 +139,7 @@ with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
     st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
-    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {datetime.now(IST).strftime('%d %b %Y, %I:%M %p')}</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {get_internet_datetime()}</div>", unsafe_allow_html=True)
 
     if not st.session_state.greeted:
         st.success("👋 Welcome to FYUGP Assistant! Ask your questions or upload a PDF to begin.")
