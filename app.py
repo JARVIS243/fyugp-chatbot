@@ -29,28 +29,23 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Remove Streamlit top padding and header */
-header, .block-container {
+/* 🔥 Remove Streamlit's top space and black bar */
+header, .block-container, [data-testid="stDecoration"] {
+    display: none !important;
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
-header { display: none !important; }
 
-/* ✅ Remove hidden container above columns (the box) */
-[data-testid="stDecoration"] {
-    display: none !important;
-}
-
-/* 🌑 Set dark background and font */
-html, body, .stApp {
+/* 🌙 Base layout */
+body, html, .stApp {
     background-color: #111 !important;
-    font-family: 'Segoe UI', sans-serif !important;
     color: white !important;
+    font-family: 'Segoe UI', sans-serif !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* 🧊 Glass effect content area */
+/* 🧊 Main content with glass blur effect */
 .content {
     flex: 1;
     padding: 30px;
@@ -58,34 +53,34 @@ html, body, .stApp {
     min-height: 90vh;
     overflow-y: auto;
     border-radius: 16px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* ✨ Title styling */
+/* ✨ Glowing animated title */
 .title {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    margin-top: 0;
     background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 5s ease infinite;
+    margin-top: 0;
 }
 
 /* 📘 Subtitle */
 .subtitle {
     text-align: center;
-    color: #ccc;
-    margin-bottom: 25px;
+    color: #aaa;
+    margin-bottom: 30px;
 }
 
-/* 💬 Chat bubbles */
+/* 💬 Chat messages */
 .message {
     background-color: rgba(255, 255, 255, 0.08);
-    padding: 14px;
+    padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
 }
@@ -100,7 +95,7 @@ html, body, .stApp {
     color: white;
 }
 
-/* 🔘 Buttons */
+/* 🌟 Buttons with hover and glass border */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
@@ -116,14 +111,13 @@ a button {
     box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
-
 a button:hover {
     transform: translateY(-4px);
     box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
     background-position: right center;
 }
 
-/* ✨ Title glow animation */
+/* ✨ Title animation */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
