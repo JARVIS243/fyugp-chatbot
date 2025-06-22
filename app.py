@@ -134,8 +134,7 @@ with col2:
         elif "who is aju" or "who is invented you" in user_lower:
             answer = (
                 "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
-                "Aju lives in Eravankara. [📷 Instagram Profile](https://www.instagram.com/aaram_thamburan__?igsh=MTJqangxaXhwYTlhaA==) – Follow him there! "
-                "Follow him on instagram. "
+                "Aju lives in Eravankara."
                 "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science. "
                 "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
                 "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
@@ -155,4 +154,9 @@ with col2:
         st.session_state.chat_history.append(("bot", answer))
         st.rerun()
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("""
+    <hr style="margin-top: 40px; border: 0.5px solid #555;">
+    <div style="text-align:center; color:#888; font-size: 14px; margin-top: 10px;">
+        © 2025 Aju Publishers. All rights reserved.
+    </div>
+""", unsafe_allow_html=True)
