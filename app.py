@@ -129,10 +129,10 @@ with col1:
         st.success("✅ PDF loaded! Now ask anything from it.")
 
     if st.button("🔁 Reset Chat"):
-    for key in ["chat_history", "pdf_text", "greeted"]:
-        if key in st.session_state:
-            del st.session_state[key]
-    st.rerun()
+        for key in ["chat_history", "pdf_text", "greeted"]:
+            if key in st.session_state:
+                del st.session_state[key]
+        st.experimental_rerun()
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -189,11 +189,8 @@ with col2:
         else:
             answer = duckduckgo_answer(user_input)
 
-        if st.button("🔁 Reset Chat"):
-            for key in ["chat_history", "pdf_text", "greeted"]:
-                if key in st.session_state:
-                    del st.session_state[key]
-            st.experimental_rerun()
+        st.session_state.chat_history.append(("bot", answer))
+        st.rerun()
 
     st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
