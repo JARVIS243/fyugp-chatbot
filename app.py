@@ -44,7 +44,7 @@ st.markdown("""
         color: white;
         border-radius: 15px;
         backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.05); /* Glass effect */
+        background-color: rgba(255, 255, 255, 0.05);
     }
 
     .title {
@@ -88,26 +88,20 @@ st.markdown("""
         background-size: 300% 300%;
         color: white;
         padding: 10px 15px;
-        border: 1px solid rgba(255, 255, 255, 0.3); /* Light glow border */
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 8px;
         font-weight: bold;
         margin-bottom: 10px;
         width: 100%;
         cursor: pointer;
-        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15); /* Glow shadow */
+        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15);
         transition: all 0.3s ease;
     }
 
     a button:hover {
-        transform: translateY(-4px); /* Slight projection */
+        transform: translateY(-4px);
         box-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
         background-position: right center;
-    }
-
-    @keyframes flicker {
-        0% { opacity: 1; }
-        50% { opacity: 0.7; }
-        100% { opacity: 1; }
     }
 
     @keyframes titleGlow {
@@ -117,7 +111,6 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
-
 
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
