@@ -29,52 +29,49 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Remove top padding/margin from Streamlit's layout */
-.st-emotion-cache-18ni7ap, .block-container, header {
+/* ✅ Remove default Streamlit top padding/margin */
+header, .block-container, .st-emotion-cache-18ni7ap {
     padding-top: 0rem !important;
     margin-top: 0rem !important;
 }
 header { display: none !important; }
 
-/* ✅ Body background and font */
+/* ✅ Base body */
 body {
-    background-color: #111 !important;
+    background: #111 !important;
     font-family: 'Segoe UI', sans-serif !important;
     color: white;
+    margin-top: 0 !important;
 }
 
-/* ✅ Sidebar style */
+/* ✅ Sidebar layout */
 .sidebar {
     width: 180px;
     padding: 20px;
     color: white;
 }
 
-/* ✅ Main content area with glass effect */
+/* ✅ Main content layout with glass look */
 .content {
     flex: 1;
     padding: 30px;
     color: white;
-    min-height: 92vh;
+    min-height: 90vh;
     overflow-y: auto;
     border-radius: 15px;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    margin-top: 0px !important;
+    margin-top: 0px;
 }
 
-/* ✅ Title with glow animation */
+/* ✅ Title (with flicker animation like before) */
 .title {
     font-size: 32px;
     font-weight: bold;
+    color: #00ccff;
+    animation: flicker 4s linear infinite;
     text-align: center;
-    background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
-    background-size: 300% 300%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: glowText 5s ease infinite;
-    margin-top: 0;
+    margin-top: 0px;
 }
 
 /* ✅ Subtitle */
@@ -84,32 +81,31 @@ body {
     margin-bottom: 30px;
 }
 
-/* ✅ Chat message bubbles */
+/* ✅ Message bubbles */
 .message {
-    background-color: rgba(255, 255, 255, 0.07);
+    background-color: #333;
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
 }
 .user {
     text-align: right;
-    background-color: rgba(0, 128, 255, 0.2);
+    background-color: #004d99;
     color: white;
 }
 .bot {
     text-align: left;
-    background-color: rgba(0, 200, 100, 0.2);
+    background-color: #006600;
     color: white;
 }
 
-/* ✅ Button styles with glow and lift effect */
+/* ✅ Buttons with glow + hover effect */
 a button {
-    background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
-    background-size: 300% 300%;
+    background-color: #00ccff;
     color: white;
     padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
     font-weight: bold;
     margin-bottom: 10px;
     width: 100%;
@@ -118,16 +114,16 @@ a button {
     transition: all 0.3s ease;
 }
 a button:hover {
+    background-color: #0099cc;
     transform: translateY(-3px);
     box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
-    background-position: right center;
 }
 
-/* ✨ Glow animation for title */
-@keyframes glowText {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* ✅ Title flicker effect */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
 }
 </style>
 """, unsafe_allow_html=True)
