@@ -17,6 +17,70 @@ if "chat_history" not in st.session_state:
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
 
+# --- Theme Toggle ---
+theme = st.sidebar.selectbox("🎨 Theme", ["Dark", "Light", "Gamer", "Minimal", "Study Mode"])
+
+if theme == "Light":
+    st.markdown("""
+        <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --box-color: rgba(0, 0, 0, 0.05);
+            --user-bg: #e6f2ff;
+            --bot-bg: #e9ffe9;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+elif theme == "Gamer":
+    st.markdown("""
+        <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #39ff14;
+            --box-color: #1f1f1f;
+            --user-bg: #262626;
+            --bot-bg: #003300;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+elif theme == "Minimal":
+    st.markdown("""
+        <style>
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #222222;
+            --box-color: #eeeeee;
+            --user-bg: #dddddd;
+            --bot-bg: #cccccc;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+elif theme == "Study Mode":
+    st.markdown("""
+        <style>
+        :root {
+            --bg-color: #fefae0;
+            --text-color: #333333;
+            --box-color: #fef6c2;
+            --user-bg: #fdd835;
+            --bot-bg: #aed581;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+else:
+    st.markdown("""
+        <style>
+        :root {
+            --bg-color: #111;
+            --text-color: white;
+            --box-color: rgba(255, 255, 255, 0.05);
+            --user-bg: #004d99;
+            --bot-bg: #006600;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
 # --- Get Internet Date and Time ---
 def get_internet_datetime():
     try:
@@ -31,14 +95,6 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
     <style>
-    :root {
-        --bg-color: #111;
-        --text-color: white;
-        --box-color: rgba(255, 255, 255, 0.05);
-        --user-bg: #004d99;
-        --bot-bg: #006600;
-    }
-
     body { background: var(--bg-color); }
     .css-18ni7ap.e8zbici2 { background: var(--bg-color); }
 
