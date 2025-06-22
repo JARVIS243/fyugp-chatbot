@@ -138,7 +138,7 @@ def duckduckgo_answer(query):
                     return topic["Text"]
         return "🥺 No exact answer found. Please try rephrasing your question."
     except Exception as e:
-        return f"😟 Failed to get an answer.\n\n**Error:** {str(e)}"
+        return f"🥺 SORRY BRO I DON'T GET IT.\n\n**Error:** {str(e)}"
 
 # --- Fast PDF Search ---
 def search_pdf(text, query):
