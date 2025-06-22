@@ -29,42 +29,41 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* 🔧 Remove Streamlit top bar, footer, and padding */
-header, footer, .st-emotion-cache-18ni7ap, .block-container {
+/* ✅ Completely remove top space */
+.st-emotion-cache-18ni7ap {
     padding-top: 0rem !important;
-    padding-bottom: 0rem !important;
+    margin-top: 0rem !important;
+}
+
+/* ✅ Remove Streamlit top toolbar and padding */
+header, .block-container {
+    padding-top: 0rem !important;
     margin-top: 0rem !important;
 }
 header { display: none !important; }
 
-/* 🌐 Base font and body */
+/* 📱 Body and font */
 body {
-    background: #111;
-    font-family: 'Segoe UI', sans-serif;
+    background: #111 !important;
+    font-family: 'Segoe UI', sans-serif !important;
     color: white;
+    margin-top: 0 !important;
 }
 
-/* 📦 Sidebar styling */
-.sidebar {
-    width: 180px;
-    padding: 20px;
-    color: white;
-}
-
-/* 📑 Main content area with glassmorphism */
+/* 📄 Main content glass effect */
 .content {
     flex: 1;
     padding: 30px;
     color: white;
-    min-height: 88vh;
-    max-height: 88vh;
+    min-height: 90vh;
+    max-height: 90vh;
     overflow-y: auto;
     border-radius: 15px;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* ✨ Title with dynamic glow effect */
+/* ✨ Title styling */
 .title {
     font-size: 32px;
     font-weight: bold;
@@ -84,7 +83,7 @@ body {
     margin-bottom: 30px;
 }
 
-/* 💬 Chat message styles */
+/* 💬 Chat messages */
 .message {
     background-color: rgba(255, 255, 255, 0.07);
     padding: 15px;
@@ -102,7 +101,7 @@ body {
     color: white;
 }
 
-/* 🔘 Buttons with glow and hover pop effect */
+/* 🔘 Buttons with glow and projection on hover */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
@@ -124,7 +123,7 @@ a button:hover {
     background-position: right center;
 }
 
-/* ✨ Animated gradient text glow */
+/* ✨ Title glow animation */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -132,6 +131,7 @@ a button:hover {
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 
