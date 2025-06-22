@@ -28,104 +28,105 @@ def get_internet_datetime():
 
 # --- Custom CSS ---
 st.markdown("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+<style>
+/* 🔧 Remove Streamlit top bar and padding */
+header, .st-emotion-cache-18ni7ap {
+    display: none !important;
+}
 
-    html, body {
-        font-family: 'Poppins', sans-serif;
-        background: #0f0f0f;
-        color: white;
-    }
+/* 🌐 Base font and body */
+body {
+    background: #111;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
 
-    /* 🔒 Remove Streamlit default header bar */
-    header, .st-emotion-cache-1avcm0n, .st-emotion-cache-6qob1r {
-        display: none !important;
-    }
+/* 📦 Sidebar styling */
+.sidebar {
+    width: 180px;
+    padding: 20px;
+    color: white;
+}
 
-    .css-18ni7ap.e8zbici2 { background: #0f0f0f; }
-
-    .sidebar, .content {
+/* 📑 Main content area with glassmorphism */
+.content {
     flex: 1;
     padding: 30px;
     color: white;
-    backdrop-filter: blur(8px);
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    min-height: 0vh;
-    max-height: 5vh;
+    min-height: 88vh;
+    max-height: 88vh;
     overflow-y: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-    .title {
-        font-size: 36px;
-        font-weight: bold;
-        text-align: center;
-        background: linear-gradient(90deg, #00e6e6, #33ccff, #00ffcc);
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: movegradient 5s ease infinite;
-        margin-bottom: 10px;
-    }
+/* ✨ Title with dynamic glow effect */
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowText 5s ease infinite;
+}
 
-    .subtitle {
-        text-align: center;
-        color: #ccc;
-        font-size: 15px;
-        margin-bottom: 25px;
-    }
+/* 📄 Subtitle */
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 30px;
+}
 
-    .message {
-        background-color: rgba(255, 255, 255, 0.05);
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+/* 💬 Chat message styles */
+.message {
+    background-color: rgba(255, 255, 255, 0.07);
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.user {
+    text-align: right;
+    background-color: rgba(0, 128, 255, 0.2);
+    color: white;
+}
+.bot {
+    text-align: left;
+    background-color: rgba(0, 200, 100, 0.2);
+    color: white;
+}
 
-    .user {
-        text-align: right;
-        background-color: rgba(0, 102, 204, 0.2);
-    }
+/* 🔘 Buttons with glow and hover pop effect */
+a button {
+    background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
+    background-size: 300% 300%;
+    color: white;
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
 
-    .bot {
-        text-align: left;
-        background-color: rgba(0, 204, 102, 0.2);
-    }
+a button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    background-position: right center;
+}
 
-    a button {
-        background: linear-gradient(135deg, #00ccff, #3366ff, #00ffcc);
-        background-size: 300% 300%;
-        color: white;
-        font-family: 'Poppins', sans-serif;
-        padding: 10px 15px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 12px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        width: 100%;
-        cursor: pointer;
-        box-shadow: 0 0 5px rgba(0,255,255,0.2);
-        transition: all 0.3s ease;
-    }
-
-    a button:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 0 12px rgba(0,255,255,0.5);
-    }
-
-    @keyframes flicker {
-        0% { opacity: 1; }
-        50% { opacity: 0.8; }
-        100% { opacity: 1; }
-    }
-
-    @keyframes movegradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
-    </style>
+/* ✨ Animated gradient text glow */
+@keyframes glowText {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+</style>
 """, unsafe_allow_html=True)
 
 
