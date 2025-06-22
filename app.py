@@ -51,8 +51,8 @@ st.markdown("""
     backdrop-filter: blur(8px);
     background-color: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
-    min-height: 85vh;
-    max-height: 85vh;
+    min-height: 8vh;
+    max-height: 18vh;
     overflow-y: auto;
 }
 
