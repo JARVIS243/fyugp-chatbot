@@ -98,7 +98,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     if st.button("❓ Help / Guide"):
-        st.info("Use sidebar buttons or ask: What is FYUGP, VC of KU, open course site, or upload a PDF and ask from it.")
+        st.info("Use sidebar buttons to use the websites or ask your doubts in the search bar (use small letters) and upload a PDF and ask from it.")
 
     uploaded_file = st.file_uploader("📄 Upload a Notes PDF", type=["pdf"])
     if uploaded_file:
@@ -115,7 +115,7 @@ with col1:
 with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
 
     for role, msg in st.session_state.chat_history:
         css_class = "user" if role == "user" else "bot"
