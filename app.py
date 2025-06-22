@@ -29,23 +29,28 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* 🧼 Remove top bar and padding */
-header, .st-emotion-cache-18ni7ap, .st-emotion-cache-z5fcl4, .block-container {
+/* ✅ Remove Streamlit top padding and header */
+header, .block-container {
     padding-top: 0 !important;
     margin-top: 0 !important;
 }
 header { display: none !important; }
 
-/* 🌑 Background and font */
+/* ✅ Remove hidden container above columns (the box) */
+[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+/* 🌑 Set dark background and font */
 html, body, .stApp {
     background-color: #111 !important;
     font-family: 'Segoe UI', sans-serif !important;
-    color: white;
-    padding: 0 !important;
+    color: white !important;
     margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* 🧊 Main content area */
+/* 🧊 Glass effect content area */
 .content {
     flex: 1;
     padding: 30px;
@@ -54,16 +59,15 @@ html, body, .stApp {
     overflow-y: auto;
     border-radius: 16px;
     backdrop-filter: blur(12px);
-    background-color: rgba(255, 255, 255, 0.04);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* ✨ Title with gradient */
+/* ✨ Title styling */
 .title {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 10px;
+    margin-top: 0;
     background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     -webkit-background-clip: text;
@@ -78,7 +82,7 @@ html, body, .stApp {
     margin-bottom: 25px;
 }
 
-/* 💬 Chat messages */
+/* 💬 Chat bubbles */
 .message {
     background-color: rgba(255, 255, 255, 0.08);
     padding: 14px;
@@ -119,7 +123,7 @@ a button:hover {
     background-position: right center;
 }
 
-/* ✨ Glow animation for title */
+/* ✨ Title glow animation */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
