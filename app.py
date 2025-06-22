@@ -29,70 +29,69 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Remove all top padding/margin from Streamlit blocks */
+/* ✅ Completely remove Streamlit header and top padding */
+header, .st-emotion-cache-18ni7ap, .st-emotion-cache-z5fcl4, .block-container {
+    display: none !important;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
 html, body, .stApp {
     margin: 0 !important;
     padding: 0 !important;
     background: #111 !important;
-}
-
-/* ✅ Force remove Streamlit header and top blank space */
-header, .block-container, .main {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-}
-header { display: none !important; }
-
-/* ✅ Remove any padding around columns */
-.st-emotion-cache-z5fcl4 {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-
-/* ✅ Body font and layout */
-body {
     font-family: 'Segoe UI', sans-serif !important;
     color: white;
 }
 
-/* ✅ Content area */
+/* 📱 Sidebar */
+.sidebar {
+    width: 180px;
+    padding: 20px;
+    color: white;
+}
+
+/* 🧊 Chat area with glass effect */
 .content {
     flex: 1;
     padding: 30px;
     color: white;
-    border-radius: 15px;
+    min-height: 93vh;
+    max-height: 93vh;
+    overflow-y: auto;
+    border-radius: 16px;
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.05);
-    min-height: 90vh;
-    overflow-y: auto;
 }
 
-/* ✅ Title styling */
+/* ✨ Dynamic Gradient Title */
 .title {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
+    margin-top: 0;
     background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: glowText 5s ease infinite;
-    margin-top: 0px;
+    animation: glowText 6s ease infinite;
 }
 
-/* ✅ Subtitle */
+/* 📘 Subtitle */
 .subtitle {
     text-align: center;
-    color: #aaa;
-    margin-bottom: 30px;
+    color: #ccc;
+    margin-bottom: 25px;
+    font-size: 16px;
 }
 
-/* ✅ Chat messages */
+/* 💬 Chat Messages */
 .message {
     background-color: rgba(255, 255, 255, 0.07);
-    padding: 15px;
-    margin-bottom: 10px;
+    padding: 14px;
+    margin-bottom: 12px;
     border-radius: 10px;
+    font-size: 15px;
+    line-height: 1.5;
 }
 .user {
     text-align: right;
@@ -105,35 +104,30 @@ body {
     color: white;
 }
 
-/* ✅ Sidebar */
-.sidebar {
-    width: 180px;
-    padding: 20px;
-    color: white;
-}
-
-/* ✅ Buttons with glass glow + lift on hover */
+/* 🔘 Buttons: Glow + Project Effect */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     color: white;
     padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     font-weight: bold;
+    font-size: 15px;
     margin-bottom: 10px;
     width: 100%;
     cursor: pointer;
-    box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
+
 a button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 14px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
     background-position: right center;
 }
 
-/* ✅ Glow animation for title */
+/* ✨ Title text glow animation */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
