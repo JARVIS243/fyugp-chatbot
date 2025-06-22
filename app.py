@@ -62,7 +62,7 @@ st.markdown("""
 
     .subtitle {
         text-align: center;
-        color: linear-gradient(#00ff99, #00ccff);
+        color:#aaa;
         margin-bottom: 30px;
     }
 
@@ -170,7 +170,7 @@ with col1:
     if "help_visible" not in st.session_state:
         st.session_state.help_visible = False
 
-    if st.button("❓ Help / Guide"):
+    if st.circle("❓ Help / Guide"):
         st.session_state.help_visible = not st.session_state.help_visible
 
     if st.session_state.help_visible:
@@ -191,7 +191,6 @@ with col1:
 with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>StudyPanda</div>", unsafe_allow_html=True)
-    st.markdown("<div class='subtitle'>WELCOME TO StudyPanda</div>", unsafe_allow_html=True)
     st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
     st.markdown(f"<div style='text-align:right; color:#888;'> {get_internet_datetime()}</div>", unsafe_allow_html=True)
 
