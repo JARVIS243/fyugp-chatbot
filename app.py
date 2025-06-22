@@ -1,8 +1,7 @@
 import streamlit as st
 import requests
-import os
 import fitz  # PyMuPDF
-from datetime import datetime
+from datetime import datetime, timedelta
 import random
 
 # --- Configuration ---
