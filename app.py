@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 import fitz  # PyMuPDF
+from datetime import datetime
+import random
 
 # --- Configuration ---
 st.set_page_config(page_title="FYUGP Assistant", layout="wide")
@@ -10,6 +12,9 @@ if "chat_history" not in st.session_state:
 
 if "pdf_text" not in st.session_state:
     st.session_state.pdf_text = ""
+
+if "greeted" not in st.session_state:
+    st.session_state.greeted = False
 
 # --- Custom CSS ---
 st.markdown("""
@@ -109,6 +114,10 @@ with col1:
         st.session_state.pdf_text = full_text
         st.success("✅ PDF loaded! Now ask anything from it.")
 
+    if st.button("🔁 Reset Chat"):
+        st.session_state.chat_history = []
+        st.experimental_rerun()
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 # --- Chat Area ---
@@ -116,6 +125,17 @@ with col2:
     st.markdown("<div class='content'>", unsafe_allow_html=True)
     st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
     st.markdown("<div class='subtitle'>Ask from PDF, Useful websites, or any doubt, Nb:- Use Small Letters for get the answers</div>", unsafe_allow_html=True)
+    st.markdown(f"<div style='text-align:right; color:#888;'>🗓️ {datetime.now().strftime('%d %b %Y, %I:%M %p')}</div>", unsafe_allow_html=True)
+
+    if not st.session_state.greeted:
+        st.success("👋 Welcome to FYUGP Assistant! Ask your questions or upload a PDF to begin.")
+        st.session_state.greeted = True
+
+    st.info(random.choice([
+        "💡 Tip: Use small letters when typing questions for better accuracy.",
+        "📘 Tip: You can upload any notes PDF and ask questions from it!",
+        "🧠 Tip: Review your notes weekly to boost memory retention."
+    ]))
 
     for role, msg in st.session_state.chat_history:
         css_class = "user" if role == "user" else "bot"
@@ -131,12 +151,13 @@ with col2:
             answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
         elif "fyugp" in user_lower:
             answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
-        elif "who is aju" or "who is invented you" in user_lower:
+        elif "who is aju" in user_lower:
             answer = (
-                "AJU KRISHNA.\n"
                 "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
-                "Aju lives in Eravankara."
-                "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science. "
+                "Aju lived in Eravankara. Instagram id : "
+                "<a href='https://www.instagram.com/aaram_thamburan__?igsh=MTJqangxaXhwYTlhaA==' target='_blank'>@aaram_thamburan__</a> "
+                "Follow him on instagram. "
+                "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science."
                 "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
                 "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
                 "especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like 'Attendix', "
@@ -155,9 +176,5 @@ with col2:
         st.session_state.chat_history.append(("bot", answer))
         st.rerun()
 
-    st.markdown("""
-    <hr style="margin-top: 40px; border: 0.5px solid #555;">
-    <div style="text-align:center; color:#888; font-size: 14px; margin-top: 10px;">
-        © 2025 Published by Aju Krishna. All rights reserved.
-    </div>
-""", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
