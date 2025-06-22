@@ -31,22 +31,30 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
     <style>
-    body { background: #111; }
-    .css-18ni7ap.e8zbici2 { background: #111; }
+    :root {
+        --bg-color: #111;
+        --text-color: white;
+        --box-color: rgba(255, 255, 255, 0.05);
+        --user-bg: #004d99;
+        --bot-bg: #006600;
+    }
+
+    body { background: var(--bg-color); }
+    .css-18ni7ap.e8zbici2 { background: var(--bg-color); }
 
     .sidebar {
         width: 180px;
         padding: 20px;
-        color: white;
+        color: var(--text-color);
     }
 
     .content {
         flex: 1;
         padding: 30px;
-        color: white;
+        color: var(--text-color);
         border-radius: 15px;
         backdrop-filter: blur(10px);
-        background-color: rgba(255, 255, 255, 0.05);
+        background-color: var(--box-color);
     }
 
     .title {
@@ -75,14 +83,14 @@ st.markdown("""
 
     .user {
         text-align: right;
-        background-color: #004d99;
-        color: white;
+        background-color: var(--user-bg);
+        color: var(--text-color);
     }
 
     .bot {
         text-align: left;
-        background-color: #006600;
-        color: white;
+        background-color: var(--bot-bg);
+        color: var(--text-color);
     }
 
     a button {
