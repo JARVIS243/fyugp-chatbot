@@ -29,55 +29,63 @@ def get_internet_datetime():
 # --- Custom CSS ---
 st.markdown("""
 <style>
-/* ✅ Remove Streamlit top header and decoration bar */
+/* ✅ Remove top bar and spacing */
 header, [data-testid="stDecoration"] {
     display: none !important;
 }
+.block-container {
+    padding-top: 0rem !important;
+}
 
-/* ✅ Clean background and font */
+/* ✅ Set base background and font */
 html, body, .stApp {
-    background-color: #111 !important;
+    background: #111 !important;
     font-family: 'Segoe UI', sans-serif !important;
     color: white !important;
     margin: 0 !important;
     padding: 0 !important;
 }
 
-/* ✅ Ensure main container is visible */
-.block-container {
-    padding-top: 1rem !important;
+/* ✅ Sidebar */
+.sidebar {
+    width: 180px;
+    padding: 20px;
+    color: white;
 }
 
-/* ✨ Title with animated gradient text */
+/* ✅ Content box with glass effect */
+.content {
+    flex: 1;
+    padding: 30px;
+    color: white;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.04);
+    min-height: 88vh;
+    overflow-y: auto;
+}
+
+/* ✅ Gradient animated title */
 .title {
     font-size: 32px;
     font-weight: bold;
     text-align: center;
-    margin-top: 0;
     background: linear-gradient(90deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: glowText 5s ease infinite;
+    margin-top: 0px;
 }
 
-/* 📘 Subtitle */
+/* ✅ Subtitle */
 .subtitle {
     text-align: center;
     color: #aaa;
     margin-bottom: 30px;
 }
 
-/* 🧊 Glass-style content area */
-.content {
-    padding: 30px;
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.05);
-    min-height: 85vh;
-}
-
-/* 💬 Chat bubbles */
+/* ✅ Chat Messages */
 .message {
     background-color: rgba(255, 255, 255, 0.07);
     padding: 15px;
@@ -95,28 +103,29 @@ html, body, .stApp {
     color: white;
 }
 
-/* 🔘 Button style with glow & hover */
+/* ✅ Buttons with glow and hover projection */
 a button {
     background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
     background-size: 300% 300%;
     color: white;
     padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
     font-weight: bold;
     margin-bottom: 10px;
     width: 100%;
     cursor: pointer;
-    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.15);
     transition: all 0.3s ease;
 }
+
 a button:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 14px rgba(0, 255, 255, 0.4);
     background-position: right center;
 }
 
-/* ✨ Glow animation */
+/* ✨ Title glow animation */
 @keyframes glowText {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -127,6 +136,20 @@ a button:hover {
 
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
+with col1:
+    st.markdown("<div class='sidebar'>", unsafe_allow_html=True)
+    # your sidebar content here (buttons, file uploader, help, etc.)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+with col2:
+    st.markdown("<div class='content'>", unsafe_allow_html=True)
+    st.markdown("<div class='title'>FYUGP Assistant</div>", unsafe_allow_html=True)
+    st.markdown("<div class='subtitle'>Ask from PDF, KU sites, or any doubt</div>", unsafe_allow_html=True)
+
+    # your chat messages, inputs, outputs, tips, etc.
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
 
 # --- DuckDuckGo Answer Search ---
 def duckduckgo_answer(query):
