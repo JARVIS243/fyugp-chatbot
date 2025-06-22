@@ -227,7 +227,7 @@ with col2:
             answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
         elif "fyugp" in user_lower:
             answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
-        elif "who is aju" or "Who is aju" or "WHO IS AJU" or "Who is Aju"in user_lower:
+        elif "who is aju" in user_lower:
             answer = (
                 "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
                 "Aju lived in Eravankara. Instagram id : "
