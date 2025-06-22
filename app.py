@@ -28,104 +28,36 @@ def get_internet_datetime():
 
 # --- Custom CSS ---
 st.markdown("""
-<style>
-/* ✅ Remove default Streamlit top padding/margin */
-header, .block-container, .st-emotion-cache-18ni7ap {
-    padding-top: 0rem !important;
-    margin-top: 0rem !important;
-}
-header { display: none !important; }
-
-/* ✅ Base body */
-body {
-    background: #111 !important;
-    font-family: 'Segoe UI', sans-serif !important;
-    color: white;
-    margin-top: 0 !important;
-}
-
-/* ✅ Sidebar layout */
-.sidebar {
-    width: 180px;
-    padding: 20px;
-    color: white;
-}
-
-/* ✅ Main content layout with glass look */
-.content {
-    flex: 1;
-    padding: 30px;
-    color: white;
-    min-height: 90vh;
-    overflow-y: auto;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.05);
-    margin-top: 0px;
-}
-
-/* ✅ Title (with flicker animation like before) */
-.title {
-    font-size: 32px;
-    font-weight: bold;
-    color: #00ccff;
-    animation: flicker 4s linear infinite;
-    text-align: center;
-    margin-top: 0px;
-}
-
-/* ✅ Subtitle */
-.subtitle {
-    text-align: center;
-    color: #aaa;
-    margin-bottom: 30px;
-}
-
-/* ✅ Message bubbles */
-.message {
-    background-color: #333;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-}
-.user {
-    text-align: right;
-    background-color: #004d99;
-    color: white;
-}
-.bot {
-    text-align: left;
-    background-color: #006600;
-    color: white;
-}
-
-/* ✅ Buttons with glow + hover effect */
-a button {
-    background-color: #00ccff;
-    color: white;
-    padding: 10px 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    width: 100%;
-    cursor: pointer;
-    box-shadow: 0 0 6px rgba(0, 255, 255, 0.2);
-    transition: all 0.3s ease;
-}
-a button:hover {
-    background-color: #0099cc;
-    transform: translateY(-3px);
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
-}
-
-/* ✅ Title flicker effect */
-@keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.7; }
-    100% { opacity: 1; }
-}
-</style>
+    <style>
+    body { background: #111; }
+    .css-18ni7ap.e8zbici2 { background: #111; }
+    .sidebar { width: 180px; padding: 20px; color: white; }
+    .content { flex: 1; padding: 30px; color: white; }
+    .title { font-size: 32px; font-weight: bold; color: #00ccff;
+             animation: flicker 4s linear infinite; text-align: center; }
+    .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
+    .message { background-color: #333; padding: 15px; margin-bottom: 10px;
+               border-radius: 10px; }
+    .user { text-align: right; background-color: #004d99; color: white; }
+    .bot { text-align: left; background-color: #006600; color: white; }
+    a button {
+        background-color: #00ccff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        width: 100%;
+        cursor: pointer;
+    }
+    a button:hover {
+        background-color: #0099cc;
+    }
+    @keyframes flicker {
+        0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; }
+    }
+    </style>
 """, unsafe_allow_html=True)
 
 # --- Layout ---
