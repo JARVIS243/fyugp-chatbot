@@ -144,7 +144,7 @@ def duckduckgo_answer(query):
             for topic in data["RelatedTopics"]:
                 if isinstance(topic, dict) and topic.get("Text"):
                     return topic["Text"]
-        return "🥺 BRO SORRY I DON'T KNOW THE ANSWER. MAMMANODU ONNUM THONNALLE 😉"
+        return "🥺 BRO SORRY I DON'T KNOW THE ANSWER. MAMMANODU ONNUM THONNALLE 😉."
     except Exception as e:
         return f"🥺 SORRY BRO I DON'T GET IT.\n\n**Error:** {str(e)}"
 
