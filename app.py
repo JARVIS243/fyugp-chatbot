@@ -173,6 +173,9 @@ with col1:
     <a href="https://casmvk.kerala.gov.in/" target="_blank">
         <button>🏫 College Site</button>
     </a>
+    <a href="https://chat.openai.com" target="_blank">
+        <button>🤖 ChatGPT</button>
+    </a>
     """, unsafe_allow_html=True)
 
     if "help_visible" not in st.session_state:
