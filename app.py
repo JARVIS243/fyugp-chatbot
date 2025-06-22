@@ -31,34 +31,93 @@ st.markdown("""
     <style>
     body { background: #111; }
     .css-18ni7ap.e8zbici2 { background: #111; }
-    .sidebar { width: 180px; padding: 20px; color: white; }
-    .content { flex: 1; padding: 30px; color: white; }
-    .title { font-size: 32px; font-weight: bold; color: #00ccff;
-             animation: flicker 4s linear infinite; text-align: center; }
-    .subtitle { text-align: center; color: #aaa; margin-bottom: 30px; }
-    .message { background-color: #333; padding: 15px; margin-bottom: 10px;
-               border-radius: 10px; }
-    .user { text-align: right; background-color: #004d99; color: white; }
-    .bot { text-align: left; background-color: #006600; color: white; }
+
+    .sidebar {
+        width: 180px;
+        padding: 20px;
+        color: white;
+    }
+
+    .content {
+        flex: 1;
+        padding: 30px;
+        color: white;
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.05); /* Glass effect */
+    }
+
+    .title {
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(270deg, #00ccff, #00ff99, #ff0099, #00ccff);
+        background-size: 600% 600%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: titleGlow 6s ease infinite;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 30px;
+    }
+
+    .message {
+        background-color: #333;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .user {
+        text-align: right;
+        background-color: #004d99;
+        color: white;
+    }
+
+    .bot {
+        text-align: left;
+        background-color: #006600;
+        color: white;
+    }
+
     a button {
-        background-color: #00ccff;
+        background: linear-gradient(135deg, #00ccff, #00ff99, #ff0099);
+        background-size: 300% 300%;
         color: white;
         padding: 10px 15px;
-        border: none;
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Light glow border */
         border-radius: 8px;
         font-weight: bold;
         margin-bottom: 10px;
         width: 100%;
         cursor: pointer;
+        box-shadow: 0 0 6px rgba(0, 255, 255, 0.15); /* Glow shadow */
+        transition: all 0.3s ease;
     }
+
     a button:hover {
-        background-color: #0099cc;
+        transform: translateY(-4px); /* Slight projection */
+        box-shadow: 0 0 12px rgba(0, 255, 255, 0.35);
+        background-position: right center;
     }
+
     @keyframes flicker {
-        0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; }
+        0% { opacity: 1; }
+        50% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes titleGlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     </style>
 """, unsafe_allow_html=True)
+
 
 # --- Layout ---
 col1, col2 = st.columns([1, 4])
