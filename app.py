@@ -91,10 +91,12 @@ def duckduckgo_answer(query):
     except Exception as e:
         return f"❌ Failed to get an answer.\n\n**Error:** {str(e)}"
 
-# --- PDF Text Search ---
+# --- Faster PDF Text Search ---
 def search_pdf(text, query):
-    matches = [line.strip() for line in text.split("\n") if query.lower() in line.lower()]
-    return "\n".join(matches[:3]) if matches else None
+    for line in text.split("\n"):
+        if query.lower() in line.lower():
+            return line.strip()
+    return None
 
 # --- Sidebar ---
 with col1:
@@ -157,31 +159,32 @@ with col2:
         st.session_state.chat_history.append(("user", user_input))
         user_lower = user_input.lower()
 
-        if "vc" in user_lower:
-            answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
-        elif "fyugp" in user_lower:
-            answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
-        elif "who is aju" in user_lower:
-            answer = (
-                "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
-                "Aju lived in Eravankara. Instagram id : "
-                "<a href='https://www.instagram.com/aaram_thamburan__?igsh=MTJqangxaXhwYTlhaA==' target='_blank'>@aaram_thamburan__</a> "
-                "Follow him on instagram. "
-                "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science."
-                "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
-                "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
-                "especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like 'Attendix', "
-                "Aju shows both dedication and curiosity in every project. The FYUGP Assistant is a smart chatbot interface designed and developed by Aju "
-                "to help students easily access semester-wise notes, model papers, and important university links—through one intelligent and interactive platform."
-            )
-        elif st.session_state.pdf_text:
-            pdf_answer = search_pdf(st.session_state.pdf_text, user_input)
-            if pdf_answer:
-                answer = f"📄 From PDF:\n\n{pdf_answer}"
+        with st.spinner("💬 Thinking..."):
+            if "vc" in user_lower:
+                answer = "👨‍🏫 The Vice Chancellor of Kerala University is Prof. Dr. Mohanan Kunnummal (as of 2025)."
+            elif "fyugp" in user_lower:
+                answer = "📘 FYUGP = Four Year Undergraduate Programme under NEP 2020. It includes flexible exits, skill credits, and multidisciplinary options."
+            elif "who is aju" in user_lower:
+                answer = (
+                    "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
+                    "Aju lived in Eravankara. Instagram id : "
+                    "<a href='https://www.instagram.com/aaram_thamburan__?igsh=MTJqangxaXhwYTlhaA==' target='_blank'>@aaram_thamburan__</a> "
+                    "Follow him on instagram. "
+                    "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science."
+                    "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
+                    "With a focus on simplicity and accessibility, Aju combines technical skills and thoughtful design to make meaningful contributions, "
+                    "especially in the field of education and technology. Whether it’s creating chatbots, websites for sharing college resources, or Android apps like 'Attendix', "
+                    "Aju shows both dedication and curiosity in every project. The FYUGP Assistant is a smart chatbot interface designed and developed by Aju "
+                    "to help students easily access semester-wise notes, model papers, and important university links—through one intelligent and interactive platform."
+                )
+            elif st.session_state.pdf_text:
+                pdf_answer = search_pdf(st.session_state.pdf_text, user_input)
+                if pdf_answer:
+                    answer = f"📄 From PDF:\n\n{pdf_answer}"
+                else:
+                    answer = duckduckgo_answer(user_input)
             else:
                 answer = duckduckgo_answer(user_input)
-        else:
-            answer = duckduckgo_answer(user_input)
 
         st.session_state.chat_history.append(("bot", answer))
 
