@@ -1,5 +1,6 @@
 Notes : "https://notecen.netlify.app/"
 University : "https://www.keralauniversity.ac.in/"
-Courses : "https://slcm.keralauniversity.ac.in/"
-
+Courses 1 : "https://slcm.keralauniversity.ac.in/"
+Courses 2 : "https://kerala.kreap.co.in/"
 College : "https://casmvk.kerala.gov.in/"
+
