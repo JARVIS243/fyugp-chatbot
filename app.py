@@ -172,7 +172,7 @@ with col1:
     st.markdown("## 🔗 Quick Access")
 
     st.markdown("""
-    <a href="https://thunderous-sunflower-7230f3.netlify.app/" target="_blank">
+    <a href="https://notecen.netlify.app/" target="_blank">
         <button>📝 Notes Site</button>
     </a>
     <a href="https://keralauniversity.ac.in/" target="_blank">
@@ -254,3 +254,4 @@ with col2:
 
     st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
+
