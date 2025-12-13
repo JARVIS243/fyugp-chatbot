@@ -1,4 +1,5 @@
-Notes : "https://thunderous-sunflower-7230f3.netlify.app/"
+Notes : "https://notecen.netlify.app/"
 University : "https://www.keralauniversity.ac.in/"
 Courses : "https://slcm.keralauniversity.ac.in/"
+
 College : "https://casmvk.kerala.gov.in/"
