@@ -231,7 +231,7 @@ with col2:
             answer = (
                 "Aju is a passionate and creative student with a strong interest in building useful and innovative digital tools. "
                 "Aju lived in Eravankara. Instagram id : "
-                "<a href='https://www.instagram.com/aaram_thamburan__?igsh=MTJqangxaXhwYTlhaA==' target='_blank'>@aaram_thamburan__</a> "
+                "<a href='https://www.instagram.com/aaram.thampuran__/#' target='_blank'>@aaram.thamburan__</a> "
                 "Follow him on instagram. "
                 "He is now studying in the CAS MAVELIKARA in the Bsc Computer Science. "
                 "Always eager to learn, Aju enjoys turning ideas into real projects—especially web apps and educational tools that help others. "
@@ -254,4 +254,5 @@ with col2:
 
     st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
+
 
