@@ -179,7 +179,10 @@ with col1:
         <button>🏛️ University Site</button>
     </a>
     <a href="https://slcm.keralauniversity.ac.in/" target="_blank">
-        <button>📚 Course Site</button>
+        <button>📚 SLCM PORTAL</button>
+    </a>
+    <a href="https://kerala.kreap.co.in/" target="_blank">
+        <button>📚 KREAP PORTAL</button>
     </a>
     <a href="https://casmvk.kerala.gov.in/" target="_blank">
         <button>🏫 College Site</button>
@@ -254,5 +257,6 @@ with col2:
 
     st.markdown("<div style='text-align:center; color:#666; margin-top: 30px;'>© 2025 | Published by Aju Krishna</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
